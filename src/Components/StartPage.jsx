@@ -1,10 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 
 function StartPage() {
     const [city, setCity] = useState("");
+    const navigate = useNavigate();
+
     // console.log(city);
-    const showWeather = () => {};
+    const showWeather = (e) => {
+        e.preventDefault();
+        navigate("/weather", {
+            state: {
+                city: city,
+            },
+        });
+    };
     return (
         <center>
             <div className="wrapper">
@@ -20,9 +30,11 @@ function StartPage() {
                     />
                 </div>
                 <div className="btn">
-                    <button type="submit" className="submit-btn">
-                        Search
-                    </button>
+                    <form action="" onSubmit={showWeather}>
+                        <button type="submit" className="submit-btn">
+                            Search
+                        </button>
+                    </form>
                 </div>
             </div>
         </center>
