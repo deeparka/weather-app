@@ -87,4 +87,12 @@
     background-color: #00000084;
   }
 }
+
+.weather-container {
+  border: 1px solid #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px;
+}
 /*# sourceMappingURL=style.css.map */
