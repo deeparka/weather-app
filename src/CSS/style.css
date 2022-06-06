@@ -90,9 +90,127 @@
 
 .weather-container {
   border: 1px solid #000;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 20px;
+  margin-left: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 130px;
+}
+
+.weather-container .left {
+  margin-right: 70px;
+}
+
+.weather-container .left .input-city-name-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name {
+  margin-top: 10px;
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .search-icon {
+  height: 13px;
+  width: 15px;
+  margin-right: 5px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city {
+  border: none;
+  padding-left: 2px;
+  font-size: 17px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city:focus {
+  outline: none;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city::-webkit-input-placeholder {
+  font-size: 16px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city:-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city::-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.weather-container .left .input-city-name-btn .input-city-name .city::placeholder {
+  font-size: 16px;
+}
+
+.weather-container .left .input-city-name-btn .btn-class .submit-btn-class {
+  background: #fff;
+  margin: 10px 15px;
+  border: transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.weather-container .left .input-city-name-btn .btn-class .submit-btn-class .target {
+  height: 15px;
+  width: 15px;
+}
+
+.weather-container .left .weather-temp {
+  margin: 20px;
+}
+
+.weather-container .left .weather-temp .weather-icon {
+  margin-left: 20px;
+}
+
+.weather-container .left .weather-temp .weather-icon .icon {
+  height: 160px;
+  width: 160px;
+}
+
+.weather-container .left .weather-temp .temperature {
+  margin: 30px 20px 20px;
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.weather-container .left .weather-temp .temperature .temperature-celsius {
+  margin-right: 5px;
+}
+
+.weather-container .left .weather-temp .temperature .temperature-farenheit {
+  margin-left: 5px;
+}
+
+.weather-container .left .week-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.weather-container .left .week-time .day-of-week {
+  margin-right: 3px;
+}
+
+.weather-container .left .city-text-name {
+  margin: 30px 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

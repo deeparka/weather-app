@@ -2,6 +2,9 @@ $cornBlue: #6495ed;
 $bluebBtn: #3434dd;
 $hoverViolet: #810eee;
 
+@mixin search() {
+}
+
 .wrapper {
     margin-top: 200px;
     .welcome {
@@ -23,9 +26,9 @@ $hoverViolet: #810eee;
             border: none;
             padding-left: 5px;
             font-size: 30px;
-        }
-        .city:focus {
-            outline: none;
+            &:focus {
+                outline: none;
+            }
         }
     }
     .btn {
@@ -36,11 +39,11 @@ $hoverViolet: #810eee;
             padding: 10px 15px;
             border-radius: 9px;
             border: transparent;
-        }
-        .submit-btn:hover {
-            animation-name: changeColor;
-            animation-delay: 1s;
-            animation-duration: 2s;
+            &:hover {
+                animation-name: changeColor;
+                animation-delay: 1s;
+                animation-duration: 2s;
+            }
         }
     }
 }
@@ -65,6 +68,86 @@ $hoverViolet: #810eee;
 
 .weather-container {
     border: 1px solid #000;
+    width: max-content;
+    padding: 20px;
+    margin-left: 250px;
+    // background: #000;
+    // color: #fff;
     display: flex;
-    margin: 50px;
+    justify-content: center;
+    margin: 130px;
+    .left {
+        margin-right: 70px;
+        .input-city-name-btn {
+            display: flex;
+            border: 1px solid #000;
+            border-radius: 5px;
+            .input-city-name {
+                margin-top: 10px;
+                margin-left: 5px;
+                border-radius: 10px;
+                .search-icon {
+                    height: 13px;
+                    width: 15px;
+                    margin-right: 5px;
+                }
+                .city {
+                    border: none;
+                    padding-left: 2px;
+                    font-size: 17px;
+                    &:focus {
+                        outline: none;
+                    }
+                    &::placeholder {
+                        font-size: 16px;
+                    }
+                }
+            }
+            .btn-class {
+                .submit-btn-class {
+                    background: #fff;
+                    margin: 10px 15px;
+                    border: transparent;
+                    width: fit-content;
+                    .target {
+                        height: 15px;
+                        width: 15px;
+                    }
+                }
+            }
+        }
+        .weather-temp {
+            margin: 20px;
+            .weather-icon {
+                margin-left: 20px;
+                .icon {
+                    height: 160px;
+                    width: 160px;
+                }
+            }
+            .temperature {
+                margin: 30px 20px 20px;
+                font-size: 30px;
+                display: flex;
+                .temperature-celsius {
+                    margin-right: 5px;
+                }
+                .temperature-farenheit {
+                    margin-left: 5px;
+                }
+            }
+        }
+        .week-time {
+            display: flex;
+            .day-of-week {
+                margin-right: 3px;
+            }
+        }
+        .city-text-name {
+            margin: 30px 20px 20px;
+            display: flex;
+            .city-text {
+            }
+        }
+    }
 }
