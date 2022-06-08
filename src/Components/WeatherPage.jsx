@@ -6,6 +6,7 @@ import {
     BsFillArrowDownCircleFill,
 } from "react-icons/bs";
 import { BiTargetLock } from "react-icons/bi";
+import { GiWindSlap } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function WeatherPage() {
@@ -17,6 +18,7 @@ function WeatherPage() {
 
     const [cityName, setCityName] = useState(``);
 
+    const [stateName, setStateName] = useState(``);
     const [country, setCountry] = useState(``);
     const [time, setTime] = useState(``);
     const [temperatureCelsius, setTemperatureCelsius] = useState(0);
@@ -31,6 +33,15 @@ function WeatherPage() {
     const [visibility, setVisibility] = useState(0);
     const [airQuality, setAirQuality] = useState(0);
 
+    const [secondDayTime, setSecondDayTime] = useState(``);
+    const [secondDayTemperature, setSecondDayTemperature] = useState(0);
+    const [secondDayCondition, setSecondDayCondition] = useState(``);
+    const [secondDayRain, setSecondDayRain] = useState(0);
+    const [thirdDayTime, setThirdDayTime] = useState(``);
+    const [thirdDayTemperature, setThirdDayTemperature] = useState(0);
+    const [thirdDayCondition, setThirdDayCondition] = useState(``);
+    const [thirdDayRain, setThirdDayRain] = useState(0);
+
     useEffect(() => {
         const weather = async () =>
             await fetch(
@@ -38,7 +49,8 @@ function WeatherPage() {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
+                    setStateName(data.location.region);
                     setCountry(data.location.country);
                     setTime(data.location.localtime_epoch);
                     setTemperatureCelsius(data.current.temp_c);
@@ -52,6 +64,26 @@ function WeatherPage() {
                     setWindDirection(data.current.wind_dir);
                     setVisibility(data.current.vis_km);
                     setAirQuality(data.current.air_quality.co);
+                    setSecondDayTime(data.forecast.forecastday[1].date_epoch);
+                    setSecondDayTemperature(
+                        data.forecast.forecastday[1].day.avgtemp_c
+                    );
+                    setSecondDayCondition(
+                        data.forecast.forecastday[1].day.condition.text
+                    );
+                    setSecondDayRain(
+                        data.forecast.forecastday[1].day.daily_chance_of_rain
+                    );
+                    setThirdDayTime(data.forecast.forecastday[2].date_epoch);
+                    setThirdDayTemperature(
+                        data.forecast.forecastday[2].day.avgtemp_c
+                    );
+                    setThirdDayCondition(
+                        data.forecast.forecastday[2].day.condition.text
+                    );
+                    setThirdDayRain(
+                        data.forecast.forecastday[2].day.daily_chance_of_rain
+                    );
                 });
         weather();
     }, [city]);
@@ -134,7 +166,7 @@ function WeatherPage() {
                         <GoSearch className="search-icon" />
                         <input
                             type="text"
-                            placeholder="Enter City Name"
+                            placeholder="Enter City Name....."
                             className="city"
                             value={cityName}
                             onChange={(e) => setCityName(e.target.value)}
@@ -167,40 +199,91 @@ function WeatherPage() {
                     <div className="time">{twelveHourTime(time)}</div>
                 </div>
                 <div className="date">{getDate(time)}</div>
-                <div className="city-text-name">
-                    <div className="city-text">City</div>
-                    <div>:</div>
-                    <div className="city-name">{city}</div>
-                </div>
-                <div className="country">
-                    <div className="your-country">Country:</div>
+                <div className="condition">{weatherCondition}</div>
+                <div className="city-state-country">
+                    <div className="city-name">{city},</div>
+                    <div className="state">{stateName},</div>
                     <div className="country-name">{country}</div>
                 </div>
-
-                <div className="condition">{weatherCondition}</div>
             </div>
             <div className="right">
-                <div className="today-status">Today's Status</div>
-                <div className="uv">
-                    <div className="uv-index">UV Index</div>
-                    <div className="uv-value">{uvIndex}</div>
-                </div>
-                <div className="wind">
-                    <div className="wind-text">Wind Speed</div>
-                    <div className="wind-speed">{windSpeed}Km/h</div>
-                    <div className="wind-direction">{windDirection}</div>
-                </div>
-                <div className="sunrise-sunset">
-                    <div className="sunrise-sunset-text">Sunrise & Sunset</div>
-                    <div className="sunrise-up">
-                        <div className="up">
-                            <BsFillArrowUpCircleFill />
+                <div className="days-status">Upcoming Days</div>
+                <div className="days-update">
+                    <div className="second-day">
+                        <div className="second-day-week">
+                            {getDayOfWeek(secondDayTime)}
                         </div>
-                        <div className="sunrise">{sunRise}</div>
+                        <div className="second-date">
+                            {getDate(secondDayTime)}
+                        </div>
+                        <div className="second-day-icon">
+                            <BsSun className="second-day-icon" />
+                        </div>
+                        <div className="second-day-temp">
+                            {secondDayTemperature}°C
+                        </div>
+                        <div className="second-day-other">
+                            {secondDayCondition}
+                        </div>
+                        <div className="second-day-rain">
+                            <div className="second-rain-text">Rain:</div>
+                            <div className="second-rain">{secondDayRain}%</div>
+                        </div>
                     </div>
-                    <div className="sunset-down">
-                        <div className="down">
-                            <BsFillArrowDownCircleFill />
+                    <div className="third-day">
+                        <div className="third-day-week">
+                            {getDayOfWeek(thirdDayTime)}
+                        </div>
+                        <div className="third-date">
+                            {getDate(thirdDayTime)}
+                        </div>
+                        <div className="third-day-icon">
+                            <BsSun className="third-day-icon" />
+                        </div>
+                        <div className="third-day-temp">
+                            {thirdDayTemperature}°C
+                        </div>
+                        <div className="third-day-other">
+                            {thirdDayCondition}
+                        </div>
+                        <div className="third-day-rain">
+                            <div className="third-rain-text">Rain:</div>
+                            <div className="third-rain">{thirdDayRain}%</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="today-status">Today's Status</div>
+                <div className="uv-wind-sun">
+                    <div className="uv">
+                        <div className="uv-index">UV Index</div>
+                        <div className="uv-value">{uvIndex}</div>
+                    </div>
+                    <div className="wind">
+                        <div className="wind-text">Wind Speed</div>
+                        <div className="wind-speed">{windSpeed}Km/h</div>
+                        <div className="wind-direction-icon-class">
+                            <div className="wind-direction-icon">
+                                <GiWindSlap className="wind-slap-icon" />
+                            </div>
+                            <div className="wind-direction">
+                                {windDirection}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="sunrise-sunset">
+                        <div className="sunrise-sunset-text">
+                            Sunrise & Sunset
+                        </div>
+                        <div className="sunrise-up">
+                            <div className="up">
+                                <BsFillArrowUpCircleFill className="up-arrow" />
+                            </div>
+                            <div className="sunrise">{sunRise}</div>
+                        </div>
+                        <div className="sunset-down">
+                            <div className="down">
+                                <BsFillArrowDownCircleFill className="down-arrow" />
+                            </div>
                             <div className="sunset">{sunSet}</div>
                         </div>
                     </div>

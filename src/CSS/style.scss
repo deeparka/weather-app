@@ -68,14 +68,17 @@ $hoverViolet: #810eee;
 
 .weather-container {
     border: 1px solid #000;
+    border-radius: 20px;
     width: max-content;
+    border-right: 5px solid #000;
+    border-bottom: 5px solid #000;
     padding: 20px;
-    margin-left: 250px;
+    margin: 50px 130px 130px 250px;
     // background: #000;
     // color: #fff;
     display: flex;
     justify-content: center;
-    margin: 130px;
+    // margin: 130px;
     .left {
         margin-right: 70px;
         .input-city-name-btn {
@@ -83,7 +86,7 @@ $hoverViolet: #810eee;
             border: 1px solid #000;
             border-radius: 5px;
             .input-city-name {
-                margin-top: 10px;
+                margin-top: 13px;
                 margin-left: 5px;
                 border-radius: 10px;
                 .search-icon {
@@ -100,13 +103,17 @@ $hoverViolet: #810eee;
                     }
                     &::placeholder {
                         font-size: 16px;
+                        font-weight: bolder;
+                        color: #000;
                     }
                 }
             }
             .btn-class {
                 .submit-btn-class {
-                    background: #fff;
+                    background: #ebe2e2;
+                    padding: 5px 5px 3px 5px;
                     margin: 10px 15px;
+                    border-radius: 100%;
                     border: transparent;
                     width: fit-content;
                     .target {
@@ -139,14 +146,142 @@ $hoverViolet: #810eee;
         }
         .week-time {
             display: flex;
+            margin: 20px 20px 5px 42px;
             .day-of-week {
                 margin-right: 3px;
             }
         }
-        .city-text-name {
-            margin: 30px 20px 20px;
+        .date {
+            margin: 0 20px 5px 42px;
+        }
+        .condition {
+            margin: 30px 20px 5px 42px;
+        }
+        .city-state-country {
+            margin: 30px 20px 5px 42px;
+            padding: 30px 40px;
+            border-radius: 15px;
             display: flex;
-            .city-text {
+            font-size: 12px;
+            background: #7fffd4;
+            max-width: fit-content;
+            .city-name {
+                font-weight: bolder;
+            }
+            .country-name,
+            .state {
+                font-weight: bolder;
+                margin-left: 5px;
+            }
+        }
+    }
+    .right {
+        margin-left: 20px;
+        .days-status {
+            margin: 10px 20px 20px 0;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        .days-update {
+            display: flex;
+            .second-day {
+            }
+            .third-day {
+            }
+        }
+        .today-status {
+            font-weight: bolder;
+            font-size: 20px;
+            margin: 20px 20px 20px 0;
+        }
+        .uv-wind-sun {
+            display: flex;
+            .uv {
+                background: #7fffd4;
+                max-width: max-content;
+                padding: 20px 80px 20px 30px;
+                border-radius: 20px;
+                .uv-index {
+                    font-weight: bolder;
+                    font-size: 20px;
+                }
+                .uv-value {
+                    font-size: 30px;
+                    padding: 70px 10px 5px 50px;
+                }
+            }
+            .wind {
+                background: #7fffd4;
+                max-width: max-content;
+                padding: 20px 10px 20px 20px;
+                border-radius: 20px;
+                margin: 0 30px;
+                .wind-text {
+                    font-weight: bolder;
+                    font-size: 20px;
+                }
+                .wind-speed {
+                    font-size: 30px;
+                    padding: 30px 20px 15px 20px;
+                }
+                .wind-direction-icon-class {
+                    display: flex;
+                    padding-left: 60px;
+                    padding-top: 10px;
+                    .wind-direction-icon {
+                        margin-right: 5px;
+                        .wind-slap-icon {
+                            margin-top: 6px;
+                            height: 12px;
+                            width: 15px;
+                        }
+                    }
+                    .wind-direction {
+                        font-size: 20px;
+                    }
+                }
+            }
+            .sunrise-sunset {
+                background: #7fffd4;
+                max-width: max-content;
+                border-radius: 20px;
+                padding: 20px 20px 15px 20px;
+                .sunrise-sunset-text {
+                    font-weight: bolder;
+                    font-size: 20px;
+                }
+                .sunrise-up {
+                    display: flex;
+                    justify-content: space-around;
+                    padding: 30px 20px 15px 10px;
+                    .up {
+                        .up-arrow {
+                            height: 40px;
+                            width: 40px;
+                            margin-top: -10px;
+                        }
+                    }
+                    .sunrise {
+                        font-size: 18px;
+                        margin-left: 10px;
+                    }
+                }
+                .sunset-down {
+                    display: flex;
+                    justify-content: space-around;
+                    padding: 5px 20px 15px 10px;
+                    .down {
+                        .down-arrow {
+                            height: 40px;
+                            width: 40px;
+                            margin-top: -10px;
+                        }
+                    }
+                    .sunset {
+                        font-size: 18px;
+                        margin-left: 10px;
+                    }
+                }
             }
         }
     }
