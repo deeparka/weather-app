@@ -110,8 +110,8 @@ function WeatherPage() {
         let hours = dt.getHours(); // gives the value in 24 hours format
         const AmOrPm = hours >= 12 ? "PM" : "AM";
         hours = hours % 12 || 12;
-        let minutes = dt.getMinutes();
-        if (minutes.count === 1) {
+        let minutes = dt.getMinutes().toString();
+        if (minutes.length === 1) {
             minutes = "0" + minutes;
         }
         const finalTime = hours + ":" + minutes + " " + AmOrPm;
@@ -156,6 +156,12 @@ function WeatherPage() {
         // console.log(year);
 
         return month + " " + day + ", " + year;
+    };
+
+    const roundFigure = (element) => {
+        element = Math.round(element);
+        if (element < 10) return "0" + element.toString();
+        return element;
     };
 
     return (
@@ -210,45 +216,57 @@ function WeatherPage() {
                 <div className="days-status">Upcoming Days</div>
                 <div className="days-update">
                     <div className="second-day">
-                        <div className="second-day-week">
-                            {getDayOfWeek(secondDayTime)}
+                        <div className="second-week-date-icon">
+                            <div className="second-day-week">
+                                {getDayOfWeek(secondDayTime)}
+                            </div>
+                            <div className="second-date">
+                                {getDate(secondDayTime)}
+                            </div>
+                            <div className="second-day-icon">
+                                <BsSun className="second-day-icon-bs" />
+                            </div>
                         </div>
-                        <div className="second-date">
-                            {getDate(secondDayTime)}
-                        </div>
-                        <div className="second-day-icon">
-                            <BsSun className="second-day-icon" />
-                        </div>
-                        <div className="second-day-temp">
-                            {secondDayTemperature}°C
-                        </div>
-                        <div className="second-day-other">
-                            {secondDayCondition}
-                        </div>
-                        <div className="second-day-rain">
-                            <div className="second-rain-text">Rain:</div>
-                            <div className="second-rain">{secondDayRain}%</div>
+                        <div className="second-temp-condition-rain">
+                            <div className="second-day-temp">
+                                {secondDayTemperature}°C
+                            </div>
+                            <div className="second-day-condition">
+                                {secondDayCondition}
+                            </div>
+                            <div className="second-day-rain">
+                                <div className="second-rain-text">Rain:</div>
+                                <div className="second-rain">
+                                    {secondDayRain}%
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="third-day">
-                        <div className="third-day-week">
-                            {getDayOfWeek(thirdDayTime)}
+                        <div className="third-week-date-icon">
+                            <div className="third-day-week">
+                                {getDayOfWeek(thirdDayTime)}
+                            </div>
+                            <div className="third-date">
+                                {getDate(thirdDayTime)}
+                            </div>
+                            <div className="third-day-icon">
+                                <BsSun className="third-day-icon-bs" />
+                            </div>
                         </div>
-                        <div className="third-date">
-                            {getDate(thirdDayTime)}
-                        </div>
-                        <div className="third-day-icon">
-                            <BsSun className="third-day-icon" />
-                        </div>
-                        <div className="third-day-temp">
-                            {thirdDayTemperature}°C
-                        </div>
-                        <div className="third-day-other">
-                            {thirdDayCondition}
-                        </div>
-                        <div className="third-day-rain">
-                            <div className="third-rain-text">Rain:</div>
-                            <div className="third-rain">{thirdDayRain}%</div>
+                        <div className="third-temp-condition-rain">
+                            <div className="third-day-temp">
+                                {thirdDayTemperature}°C
+                            </div>
+                            <div className="third-day-condition">
+                                {thirdDayCondition}
+                            </div>
+                            <div className="third-day-rain">
+                                <div className="third-rain-text">Rain:</div>
+                                <div className="third-rain">
+                                    {thirdDayRain}%
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -260,7 +278,10 @@ function WeatherPage() {
                     </div>
                     <div className="wind">
                         <div className="wind-text">Wind Speed</div>
-                        <div className="wind-speed">{windSpeed}Km/h</div>
+                        <div className="wind-speed">
+                            <div className="ws">{roundFigure(windSpeed)}</div>
+                            <div className="kmh">Km/h</div>
+                        </div>
                         <div className="wind-direction-icon-class">
                             <div className="wind-direction-icon">
                                 <GiWindSlap className="wind-slap-icon" />
@@ -288,20 +309,27 @@ function WeatherPage() {
                         </div>
                     </div>
                 </div>
-                <div className="humidity">
-                    <div className="humidity-text">Humidity</div>
-                    <div className="humidity-percentage">{humidity}%</div>
-                    <div className="humdity-description">Bad</div>
-                </div>
-                <div className="visibility">
-                    <div className="visibility-text">Visibility</div>
-                    <div className="visible-km">{visibility}Km</div>
-                    <div className="visibility-description">Average</div>
-                </div>
-                <div className="air-quality">
-                    <div className="air-quality-text">Air Quality</div>
-                    <div className="air">{Math.round(airQuality)}</div>
-                    <div className="air-condition">Bad</div>
+                <div className="humidity-visibility-air">
+                    <div className="humidity">
+                        <div className="humidity-text">Humidity</div>
+                        <div className="humidity-percentage">{humidity}%</div>
+                        <div className="humidity-description">Bad</div>
+                    </div>
+                    <div className="visibility">
+                        <div className="visibility-text">Visibility</div>
+                        <div className="visible-km">
+                            <div className="show-visible">
+                                {roundFigure(visibility)}
+                            </div>
+                            <div className="km">Km</div>
+                        </div>
+                        <div className="visibility-description">Average</div>
+                    </div>
+                    <div className="air-quality">
+                        <div className="air-quality-text">Air Quality</div>
+                        <div className="air">{Math.round(airQuality)}</div>
+                        <div className="air-condition">Bad</div>
+                    </div>
                 </div>
             </div>
         </div>
