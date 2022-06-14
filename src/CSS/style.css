@@ -1,27 +1,34 @@
+body {
+  background: #171717;
+}
+
 .wrapper {
   margin-top: 200px;
 }
 
 .wrapper .welcome {
   font-size: 60px;
-  color: #6495ed;
+  color: #fff;
 }
 
 .wrapper .input-city {
   margin-top: 50px;
-  border: 1px solid #000;
+  background: #444444;
   padding: 5px 15px;
   border-radius: 15px;
   display: inline-block;
 }
 
 .wrapper .input-city .search-icon {
+  background: #444444;
   height: 25px;
   width: 25px;
   padding-right: 5px;
+  color: #fff;
 }
 
 .wrapper .input-city .city {
+  background: #444444;
   border: none;
   padding-left: 5px;
   font-size: 30px;
@@ -29,6 +36,7 @@
 
 .wrapper .input-city .city:focus {
   outline: none;
+  color: #fff;
 }
 
 .wrapper .btn {
@@ -36,68 +44,23 @@
 }
 
 .wrapper .btn .submit-btn {
-  background-color: #3434dd;
+  background-color: #bb86fc;
   color: #fff;
   padding: 10px 15px;
   border-radius: 9px;
   border: transparent;
 }
 
-.wrapper .btn .submit-btn:hover {
-  -webkit-animation-name: changeColor;
-          animation-name: changeColor;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-}
-
-@-webkit-keyframes changeColor {
-  0% {
-    background-color: #3434dd;
-  }
-  25% {
-    background-color: #810eee;
-  }
-  50% {
-    background-color: #6d0a6d;
-  }
-  75% {
-    background-color: #47023084;
-  }
-  100% {
-    background-color: #00000084;
-  }
-}
-
-@keyframes changeColor {
-  0% {
-    background-color: #3434dd;
-  }
-  25% {
-    background-color: #810eee;
-  }
-  50% {
-    background-color: #6d0a6d;
-  }
-  75% {
-    background-color: #47023084;
-  }
-  100% {
-    background-color: #00000084;
-  }
-}
-
 .weather-container {
   border: 1px solid #000;
   border-radius: 20px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-right: 5px solid #000;
-  border-bottom: 5px solid #000;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  background: #444444;
   padding: 20px;
-  margin: 50px 130px 130px 250px;
+  margin: 50px 130px 130px 200px;
+  color: #ededed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -112,6 +75,7 @@
 }
 
 .weather-container .left .input-city-name-btn {
+  background: #bb86fc;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,6 +100,7 @@
   border: none;
   padding-left: 2px;
   font-size: 17px;
+  background: #bb86fc;
 }
 
 .weather-container .left .input-city-name-btn .input-city-name .city:focus {
@@ -145,31 +110,32 @@
 .weather-container .left .input-city-name-btn .input-city-name .city::-webkit-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
-  color: #000;
+  color: #ededed;
 }
 
 .weather-container .left .input-city-name-btn .input-city-name .city:-ms-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
-  color: #000;
+  color: #ededed;
 }
 
 .weather-container .left .input-city-name-btn .input-city-name .city::-ms-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
-  color: #000;
+  color: #ededed;
 }
 
 .weather-container .left .input-city-name-btn .input-city-name .city::placeholder {
   font-size: 16px;
   font-weight: bolder;
-  color: #000;
+  color: #ededed;
 }
 
 .weather-container .left .input-city-name-btn .btn-class .submit-btn-class {
-  background: #ebe2e2;
-  padding: 5px 5px 3px 5px;
-  margin: 10px 15px;
+  background: #bb86fc;
+  color: #fff;
+  padding: 6px 5px 3px 5px;
+  margin: 10px 8px 10px 75px;
   border-radius: 100%;
   border: transparent;
   width: -webkit-fit-content;
@@ -246,7 +212,7 @@
   display: -ms-flexbox;
   display: flex;
   font-size: 15px;
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -279,7 +245,7 @@
 }
 
 .weather-container .right .days-update .second-day {
-  background: #7fffd4;
+  background: #bb86fc;
   border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -339,7 +305,7 @@
 }
 
 .weather-container .right .days-update .third-day {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -412,11 +378,11 @@
 }
 
 .weather-container .right .uv-wind-sun .uv {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-  padding: 20px 80px 20px 30px;
+  padding: 20px 80px 10px 30px;
   border-radius: 20px;
 }
 
@@ -427,11 +393,11 @@
 
 .weather-container .right .uv-wind-sun .uv .uv-value {
   font-size: 30px;
-  padding: 70px 10px 5px 50px;
+  padding: 70px 10px 0px 60px;
 }
 
 .weather-container .right .uv-wind-sun .wind {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -484,7 +450,7 @@
 }
 
 .weather-container .right .uv-wind-sun .sunrise-sunset {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -544,7 +510,7 @@
 }
 
 .weather-container .right .humidity-visibility-air .humidity {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -569,7 +535,7 @@
 }
 
 .weather-container .right .humidity-visibility-air .visibility {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -606,7 +572,7 @@
 }
 
 .weather-container .right .humidity-visibility-air .air-quality {
-  background: #7fffd4;
+  background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;

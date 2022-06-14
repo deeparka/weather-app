@@ -1,12 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { GoSearch } from "react-icons/go";
+
+import { BsCloudRainHeavy, BsCloudRain } from "react-icons/bs";
 import {
-    BsSun,
-    BsFillArrowUpCircleFill,
-    BsFillArrowDownCircleFill,
-} from "react-icons/bs";
-import { BiTargetLock } from "react-icons/bi";
-import { GiWindSlap } from "react-icons/gi";
+    WiDaySunny,
+    WiSunset,
+    WiSunrise,
+    WiCloud,
+    WiDayCloudy,
+    WiNightClear,
+    WiCloudy,
+    WiDayHail,
+    WiDaySnowWind,
+    WiDaySleet,
+    WiLightning,
+    WiSnowWind,
+    WiSnowflakeCold,
+    WiDayRainMix,
+    WiSleet,
+    WiNightAltRainMix,
+    WiNightSnowWind,
+    WiNightSleet,
+    WiNightCloudy,
+    WiNightHail,
+    WiNightAltSnow,
+    WiDaySnow,
+    WiShowers,
+    WiNightStormShowers,
+    WiDayStormShowers,
+    WiDaySnowThunderstorm,
+    WiNightSnowThunderstorm,
+    WiRainMix,
+    WiSprinkle,
+    WiRain,
+} from "react-icons/wi";
+import { BiTargetLock, BiCloudLightRain } from "react-icons/bi";
+import { GiWindSlap, GiFog } from "react-icons/gi";
+import { RiMistFill } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function WeatherPage() {
@@ -41,6 +71,8 @@ function WeatherPage() {
     const [thirdDayTemperature, setThirdDayTemperature] = useState(0);
     const [thirdDayCondition, setThirdDayCondition] = useState(``);
     const [thirdDayRain, setThirdDayRain] = useState(0);
+
+    const [isDay, setIsDay] = useState(0);
 
     useEffect(() => {
         const weather = async () =>
@@ -84,6 +116,7 @@ function WeatherPage() {
                     setThirdDayRain(
                         data.forecast.forecastday[2].day.daily_chance_of_rain
                     );
+                    setIsDay(data.current.is_day);
                 });
         weather();
     }, [city]);
@@ -164,6 +197,107 @@ function WeatherPage() {
         return element;
     };
 
+    const weatherLogo = (condition, className) => {
+        // eslint-disable-next-line default-case
+        switch (condition) {
+            case "Sunny":
+                return <WiDaySunny className={className} />;
+            case "Clear":
+                return <WiNightClear className={className} />;
+            case isDay === 0 && "Partly cloudy":
+                return <WiNightCloudy className={className} />;
+            case "Partly cloudy":
+                return <WiDayCloudy className={className} />;
+            case "Cloudy":
+                return <WiCloud className={className} />;
+            case "Overcast":
+                return <WiCloudy className={className} />;
+            case "Mist":
+                return <RiMistFill className={className} />;
+            case isDay === 0 && "Patchy rain possible":
+                return <WiNightHail className={className} />;
+            case "Patchy rain possible":
+                return <WiDayHail className={className} />;
+            case isDay === 0 && "Patchy snow possible":
+                return <WiNightSnowWind className={className} />;
+            case "Patchy snow possible":
+                return <WiDaySnowWind className={className} />;
+            case isDay === 0 &&
+                ("Patchy sleet possible" ||
+                    "Light sleet showers" ||
+                    "Moderate or heavy sleet showers"):
+                return <WiNightSleet className={className} />;
+            case "Patchy sleet possible" ||
+                "Light sleet showers" ||
+                "Moderate or heavy sleet showers":
+                return <WiDaySleet className={className} />;
+            case "Thundery outbreaks possible":
+                return <WiLightning className={className} />;
+            case "Blowing snow":
+                return <WiSnowWind className={className} />;
+            case "Blizzard" ||
+                "Ice pellets" ||
+                "Moderate or heavy showers of ice pellets" ||
+                "Light showers of ice pellets":
+                return <WiSnowflakeCold className={className} />;
+            case "Fog" || "Freezing fog":
+                return <GiFog className={className} />;
+            case "Light drizzle" || "Light rain":
+                return <BiCloudLightRain className={className} />;
+            case "Freezing drizzle" ||
+                "Heavy freezing drizzle" ||
+                "Patchy freezing drizzle possible":
+                return <WiRainMix className={className} />;
+            case isDay === 0 && ("Patchy light drizzle" || "Patchy light rain"):
+                return <WiNightAltRainMix className={className} />;
+            case "Patchy light drizzle" || "Patchy light rain":
+                return <WiDayRainMix className={className} />;
+            case "Moderate rain" || "Moderate rain at times":
+                return <BsCloudRain className={className} />;
+            case "Heavy rain" || "Heavy rain at times":
+                return <BsCloudRainHeavy className={className} />;
+            case "Light freezing rain" || "Moderate or heavy freezing rain":
+                return <WiRain className={className} />;
+            case "Light sleet" || "Moderate or heavy sleet":
+                return <WiSleet className={className} />;
+            case isDay === 0 &&
+                ("Patchy light snow" ||
+                    "Patchy moderate snow" ||
+                    "Patchy heavy snow" ||
+                    "Light snow" ||
+                    "Moderate snow" ||
+                    "Heavy snow"):
+                return <WiNightAltSnow className={className} />;
+            case "Patchy light snow" ||
+                "Patchy moderate snow" ||
+                "Patchy heavy snow" ||
+                "Light snow" ||
+                "Moderate snow" ||
+                "Heavy snow":
+                return <WiDaySnow className={className} />;
+            case "Light rain shower" ||
+                "Moderate or heavy rain shower" ||
+                "Torrential rain shower":
+                return <WiShowers className={className} />;
+            case "Light snow showers" || "Moderate or heavy snow showers":
+                return <WiSprinkle className={className} />;
+            case isDay === 0 &&
+                ("Patchy light rain with thunder" ||
+                    "Moderate or heavy rain with thunder"):
+                return <WiNightStormShowers className={className} />;
+            case "Patchy light rain with thunder" ||
+                "Moderate or heavy rain with thunder":
+                return <WiDayStormShowers className={className} />;
+            case isDay === 0 &&
+                ("Patchy light snow with thunder" ||
+                    "Moderate or heavy snow with thunder"):
+                return <WiNightSnowThunderstorm className={className} />;
+            case "Patchy light snow with thunder" ||
+                "Moderate or heavy snow with thunder":
+                return <WiDaySnowThunderstorm className={className} />;
+        }
+    };
+
     return (
         <div className="weather-container">
             <div className="left">
@@ -179,7 +313,11 @@ function WeatherPage() {
                         />
                     </div>
                     <div className="btn-class">
-                        <form action="" onSubmit={showWeather}>
+                        <form
+                            action=""
+                            onSubmit={showWeather}
+                            className="form-btn"
+                        >
                             <button type="submit" className="submit-btn-class">
                                 <BiTargetLock className="target" />
                             </button>
@@ -188,13 +326,14 @@ function WeatherPage() {
                 </div>
                 <div className="weather-temp">
                     <div className="weather-icon">
-                        <BsSun className="icon" />
+                        {weatherLogo(weatherCondition, "icon")}
                     </div>
+
                     <div className="temperature">
                         <div className="temperature-celsius">
                             {temperatureCelsius}°C
                         </div>
-                        <div> / </div>
+                        <div className="slash"> / </div>
                         <div className="temperature-farenheit">
                             {temperatureFarenheit}°F
                         </div>
@@ -224,7 +363,10 @@ function WeatherPage() {
                                 {getDate(secondDayTime)}
                             </div>
                             <div className="second-day-icon">
-                                <BsSun className="second-day-icon-bs" />
+                                {weatherLogo(
+                                    secondDayCondition,
+                                    "second-day-icon-bs"
+                                )}
                             </div>
                         </div>
                         <div className="second-temp-condition-rain">
@@ -251,7 +393,10 @@ function WeatherPage() {
                                 {getDate(thirdDayTime)}
                             </div>
                             <div className="third-day-icon">
-                                <BsSun className="third-day-icon-bs" />
+                                {weatherLogo(
+                                    thirdDayCondition,
+                                    "third-day-icon-bs"
+                                )}
                             </div>
                         </div>
                         <div className="third-temp-condition-rain">
@@ -297,13 +442,13 @@ function WeatherPage() {
                         </div>
                         <div className="sunrise-up">
                             <div className="up">
-                                <BsFillArrowUpCircleFill className="up-arrow" />
+                                <WiSunrise className="up-arrow" />
                             </div>
                             <div className="sunrise">{sunRise}</div>
                         </div>
                         <div className="sunset-down">
                             <div className="down">
-                                <BsFillArrowDownCircleFill className="down-arrow" />
+                                <WiSunset className="down-arrow" />
                             </div>
                             <div className="sunset">{sunSet}</div>
                         </div>
