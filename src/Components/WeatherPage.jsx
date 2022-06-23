@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { GoSearch } from "react-icons/go";
-
 import { BsCloudRainHeavy, BsCloudRain } from "react-icons/bs";
 import {
     WiDaySunny,
@@ -298,6 +297,36 @@ function WeatherPage() {
         }
     };
 
+    const humidityDescription = (humidity) => {
+        if (humidity < 25) {
+            return "Low";
+        } else if (humidity >= 25 && humidity < 30) {
+            return "Fair";
+        } else if (humidity >= 30 && humidity < 60) {
+            return "Good";
+        } else if (humidity >= 60 && humidity < 70) {
+            return "Bad";
+        } else {
+            return "High";
+        }
+    };
+
+    const airQualityDescription = (airQuality) => {
+        if (airQuality >= 0 && airQuality <= 50) {
+            return "Good";
+        } else if (airQuality >= 51 && airQuality <= 100) {
+            return "Moderate";
+        } else if (airQuality >= 101 && airQuality <= 150) {
+            return `Unhealthy for Sensitive Groups`;
+        } else if (airQuality >= 151 && airQuality <= 200) {
+            return "Unhealthy";
+        } else if (airQuality >= 201 && airQuality <= 300) {
+            return "Very Unhealthy";
+        } else {
+            return "Hazardous";
+        }
+    };
+
     return (
         <div className="weather-container">
             <div className="left">
@@ -458,7 +487,9 @@ function WeatherPage() {
                     <div className="humidity">
                         <div className="humidity-text">Humidity</div>
                         <div className="humidity-percentage">{humidity}%</div>
-                        <div className="humidity-description">Bad</div>
+                        <div className="humidity-description">
+                            {humidityDescription(humidity)}
+                        </div>
                     </div>
                     <div className="visibility">
                         <div className="visibility-text">Visibility</div>
@@ -473,7 +504,45 @@ function WeatherPage() {
                     <div className="air-quality">
                         <div className="air-quality-text">Air Quality</div>
                         <div className="air">{Math.round(airQuality)}</div>
-                        <div className="air-condition">Bad</div>
+                        {airQualityDescription(airQuality) === "Good" && (
+                            <div className="air-condition-good">
+                                {airQualityDescription(airQuality)}
+                            </div>
+                        )}
+                        {airQualityDescription(airQuality) === "Moderate" && (
+                            <div className="air-condition-moderate">
+                                {airQualityDescription(airQuality)}
+                            </div>
+                        )}
+                        {airQualityDescription(airQuality) ===
+                            "Unhealthy for Sensitive Groups" && (
+                            <div className="air-condition-unhealthy-group">
+                                <span className="air-condition-unhealthy-group-span">
+                                    {airQualityDescription(airQuality).slice(
+                                        0,
+                                        13
+                                    )}
+                                </span>
+                                <br />
+                                {airQualityDescription(airQuality).slice(14)}
+                            </div>
+                        )}
+                        {airQualityDescription(airQuality) === "Unhealthy" && (
+                            <div className="air-condition-unhealthy">
+                                {airQualityDescription(airQuality)}
+                            </div>
+                        )}
+                        {airQualityDescription(airQuality) ===
+                            "Very Unhealthy" && (
+                            <div className="air-condition-very-unhealthy">
+                                {airQualityDescription(airQuality)}
+                            </div>
+                        )}
+                        {airQualityDescription(airQuality) === "Hazardous" && (
+                            <div className="air-condition-hazardous">
+                                {airQualityDescription(airQuality)}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -97,7 +97,7 @@ body {
                     margin: 10px 8px 10px 75px;
                     border-radius: 100%;
                     border: transparent;
-                    width: fit-content;
+                    max-width: fit-content;
                     .target {
                         height: 15px;
                         width: 15px;
@@ -271,7 +271,7 @@ body {
             .uv {
                 background: #bb86fc;
                 max-width: max-content;
-                padding: 20px 80px 10px 30px;
+                padding: 20px 80px 0 30px;
                 border-radius: 20px;
                 .uv-index {
                     font-weight: bolder;
@@ -279,7 +279,7 @@ body {
                 }
                 .uv-value {
                     font-size: 30px;
-                    padding: 70px 10px 0px 60px;
+                    padding: 90px 10px 0 60px;
                 }
             }
             .wind {
@@ -380,8 +380,8 @@ body {
                     padding: 40px 0 0 20px;
                 }
                 .humidity-description {
-                    font-size: 15px;
-                    padding: 30px 0 0 32px;
+                    font-size: 20px;
+                    padding: 35px 0 0 32px;
                 }
             }
             .visibility {
@@ -415,7 +415,7 @@ body {
                 background: #bb86fc;
                 max-width: max-content;
                 border-radius: 20px;
-                padding: 20px 65px 22px 28px;
+                padding: 20px 50px 22px 28px;
                 margin: 30px 0 0 30px;
                 .air-quality-text {
                     font-weight: bolder;
@@ -423,11 +423,28 @@ body {
                 }
                 .air {
                     font-size: 30px;
-                    padding: 40px 0 0 20px;
+                    padding: 40px 0 0 40px;
                 }
-                .air-condition {
+                .air-condition-good {
+                    font-size: 16px;
+                    padding: 34.5px 37px 0 40px;
+                }
+                .air-condition-unhealthy-group {
+                    font-size: 14px;
+                    padding: 34.5px 0 0 15px;
+                    .air-condition-unhealthy-group-span {
+                        padding-left: 11px;
+                    }
+                }
+                .air-condition-very-unhealthy {
                     font-size: 15px;
-                    padding: 30px 0 0 32px;
+                    padding: 34.5px 0 0 15px;
+                }
+                .air-condition-moderate,
+                .air-condition-unhealthy,
+                .air-condition-hazardous {
+                    font-size: 16px;
+                    padding: 34.5px 14px 0 28px;
                 }
             }
         }
