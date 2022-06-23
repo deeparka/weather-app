@@ -297,6 +297,18 @@ function WeatherPage() {
         }
     };
 
+    const visibilityDescription = (visibility) => {
+        if (visibility < 0) {
+            return `Very Low`;
+        } else if (visibility > 0 && visibility < 10) {
+            return `Low`;
+        } else if (visibility >= 10 && visibility < 20) {
+            return `Average`;
+        } else {
+            return `Good`;
+        }
+    };
+
     const humidityDescription = (humidity) => {
         if (humidity < 25) {
             return "Low";
@@ -499,7 +511,9 @@ function WeatherPage() {
                             </div>
                             <div className="km">Km</div>
                         </div>
-                        <div className="visibility-description">Average</div>
+                        <div className="visibility-description">
+                            {visibilityDescription(Math.round(visibility))}
+                        </div>
                     </div>
                     <div className="air-quality">
                         <div className="air-quality-text">Air Quality</div>
