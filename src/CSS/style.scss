@@ -46,407 +46,434 @@ body {
 }
 
 //WeatherPage styling
-.weather-container {
-    border: 1px solid #000;
-    border-radius: 20px;
-    max-width: max-content;
-    background: #444444;
-    padding: 20px;
-    margin: 50px 130px 130px 200px;
-    color: #ededed;
-    display: flex;
-    justify-content: center;
-    .left {
-        margin-right: 70px;
-        margin-top: 13px;
-        .input-city-name-btn {
-            background: #bb86fc;
-            display: flex;
-            border: 1px solid #000;
-            border-radius: 5px;
-            margin-top: 20px;
-            .input-city-name {
-                margin-top: 13px;
-                margin-left: 5px;
-                border-radius: 10px;
-                .search-icon {
-                    height: 13px;
-                    width: 15px;
-                    margin-right: 5px;
-                }
-                .city {
-                    border: none;
-                    padding-left: 2px;
-                    font-size: 17px;
-                    background: #bb86fc;
-                    &:focus {
-                        outline: none;
-                    }
-                    &::placeholder {
-                        font-size: 16px;
-                        font-weight: bolder;
-                        color: #ededed;
-                    }
-                }
-            }
-            .btn-class {
-                .submit-btn-class {
-                    background: #bb86fc;
-                    color: #fff;
-                    padding: 6px 5px 3px 5px;
-                    margin: 10px 8px 10px 75px;
-                    border-radius: 100%;
-                    border: transparent;
-                    max-width: fit-content;
-                    .target {
-                        height: 15px;
-                        width: 15px;
-                    }
-                }
-            }
-        }
-        .weather-temp {
-            margin: 20px;
-            .weather-icon {
-                margin: 60px 0 60px 50px;
-                .icon {
-                    height: 180px;
-                    width: 200px;
-                }
-            }
-            .temperature {
-                margin: 20px 20px 40px 20px;
-                font-size: 40px;
+.error-or-not {
+    .weather-container {
+        border: 1px solid #000;
+        border-radius: 20px;
+        max-width: max-content;
+        background: #444444;
+        padding: 20px;
+        margin: 50px 130px 130px 200px;
+        color: #ededed;
+        display: flex;
+        justify-content: center;
+        .left {
+            margin-right: 70px;
+            margin-top: 13px;
+            .input-city-name-btn {
+                background: #bb86fc;
                 display: flex;
-                font-weight: 500;
-                .temperature-celsius {
-                    margin-right: 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                margin-top: 20px;
+                .input-city-name {
+                    margin-top: 13px;
+                    margin-left: 5px;
+                    border-radius: 10px;
+                    .search-icon {
+                        height: 13px;
+                        width: 15px;
+                        margin-right: 5px;
+                    }
+                    .city {
+                        border: none;
+                        padding-left: 2px;
+                        font-size: 17px;
+                        background: #bb86fc;
+                        &:focus {
+                            outline: none;
+                        }
+                        &::placeholder {
+                            font-size: 16px;
+                            font-weight: bolder;
+                            color: #ededed;
+                        }
+                    }
                 }
-                .temperature-farenheit {
+                .btn-class {
+                    .submit-btn-class {
+                        background: #bb86fc;
+                        color: #fff;
+                        padding: 6px 5px 3px 5px;
+                        margin: 10px 8px 10px 75px;
+                        border-radius: 100%;
+                        border: transparent;
+                        max-width: fit-content;
+                        .target {
+                            height: 15px;
+                            width: 15px;
+                        }
+                    }
+                }
+            }
+            .weather-temp {
+                margin: 20px;
+                .weather-icon {
+                    margin: 60px 0 60px 50px;
+                    .icon {
+                        height: 180px;
+                        width: 200px;
+                    }
+                }
+                .temperature {
+                    margin: 20px 20px 40px 20px;
+                    font-size: 40px;
+                    display: flex;
+                    font-weight: 500;
+                    .temperature-celsius {
+                        margin-right: 5px;
+                    }
+                    .temperature-farenheit {
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .week-time {
+                display: flex;
+                margin: 45px 20px 5px 42px;
+                .day-of-week {
+                    font-size: 25px;
+                    margin-right: 3px;
+                }
+                .time {
+                    font-size: 25px;
+                }
+            }
+            .date {
+                margin: 0 20px 5px 42px;
+                font-size: 23px;
+            }
+            .condition {
+                margin: 30px 20px 5px 42px;
+                font-size: 18px;
+            }
+            .city-state-country {
+                margin: 30px 20px 5px 42px;
+                padding: 30px 40px;
+                border-radius: 15px;
+                display: flex;
+                font-size: 15px;
+                background: #bb86fc;
+                max-width: max-content;
+                .city-name {
+                    font-weight: bolder;
+                }
+                .country-name,
+                .state {
+                    font-weight: bolder;
                     margin-left: 5px;
                 }
             }
         }
-        .week-time {
-            display: flex;
-            margin: 45px 20px 5px 42px;
-            .day-of-week {
-                font-size: 25px;
-                margin-right: 3px;
-            }
-            .time {
-                font-size: 25px;
-            }
-        }
-        .date {
-            margin: 0 20px 5px 42px;
-            font-size: 23px;
-        }
-        .condition {
-            margin: 30px 20px 5px 42px;
-            font-size: 18px;
-        }
-        .city-state-country {
-            margin: 30px 20px 5px 42px;
-            padding: 30px 40px;
-            border-radius: 15px;
-            display: flex;
-            font-size: 15px;
-            background: #bb86fc;
-            max-width: max-content;
-            .city-name {
+        .right {
+            margin-left: 20px;
+            .days-status {
+                margin: 10px 20px 20px 0;
                 font-weight: bolder;
+                font-size: 20px;
             }
-            .country-name,
-            .state {
+            .days-update {
+                display: flex;
+                .second-day {
+                    background: #bb86fc;
+                    border-radius: 15px;
+                    display: flex;
+                    max-width: max-content;
+                    .second-week-date-icon {
+                        padding: 20px 0 20px 20px;
+                        .second-day-week {
+                            font-weight: bolder;
+                            font-size: 20px;
+                        }
+                        .second-date {
+                            font-weight: bolder;
+                            font-size: 20px;
+                            margin: 5px 0;
+                        }
+                        .second-day-icon {
+                            margin: 15px 0 0 38px;
+                            .second-day-icon-bs {
+                                height: 40px;
+                                width: 40px;
+                            }
+                        }
+                    }
+                    .second-temp-condition-rain {
+                        margin: 0 0 0 15px;
+                        padding: 20px 20px 20px 5px;
+                        line-height: 30px;
+                        .second-day-temp {
+                            font-size: 30px;
+                            font-weight: 400;
+                        }
+                        .second-day-rain {
+                            display: flex;
+                            .second-rain-text {
+                                font-weight: 500;
+                            }
+                            .second-rain {
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+                .third-day {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    display: flex;
+                    margin: 0 0 0 20px;
+                    border-radius: 15px;
+                    .third-week-date-icon {
+                        padding: 20px 0 20px 20px;
+                        .third-day-week {
+                            font-weight: bolder;
+                            font-size: 20px;
+                        }
+                        .third-date {
+                            font-weight: bolder;
+                            font-size: 20px;
+                            margin: 5px 0;
+                        }
+                        .third-day-icon {
+                            margin: 15px 0 0 38px;
+                            .third-day-icon-bs {
+                                height: 40px;
+                                width: 40px;
+                            }
+                        }
+                    }
+                    .third-temp-condition-rain {
+                        margin: 0 0 0 15px;
+                        padding: 20px 20px 20px 5px;
+                        line-height: 30px;
+                        .third-day-temp {
+                            font-size: 30px;
+                            font-weight: 400;
+                        }
+                        .third-day-rain {
+                            display: flex;
+                            .third-rain-text {
+                                font-weight: 500;
+                            }
+                            .third-rain {
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+            .today-status {
                 font-weight: bolder;
-                margin-left: 5px;
+                font-size: 20px;
+                margin: 40px 20px 20px 0;
+            }
+            .uv-wind-sun {
+                display: flex;
+                .uv {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    padding: 20px 80px 0 30px;
+                    border-radius: 20px;
+                    .uv-index {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .uv-value {
+                        font-size: 30px;
+                        padding: 90px 10px 0 60px;
+                    }
+                }
+                .wind {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    padding: 20px 27px 20px 30px;
+                    border-radius: 20px;
+                    margin: 0 30px;
+                    .wind-text {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .wind-speed {
+                        padding: 30px 20px 15px 20px;
+                        display: flex;
+                        .ws {
+                            font-size: 40px;
+                        }
+                        .kmh {
+                            font-size: 25px;
+                            margin: 12px 0 0 2px;
+                        }
+                    }
+                    .wind-direction-icon-class {
+                        display: flex;
+                        padding-left: 60px;
+                        padding-top: 10px;
+                        .wind-direction-icon {
+                            margin-right: 5px;
+                            .wind-slap-icon {
+                                margin-top: 6px;
+                                height: 12px;
+                                width: 15px;
+                            }
+                        }
+                        .wind-direction {
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .sunrise-sunset {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    border-radius: 20px;
+                    padding: 20px 20px 15px 20px;
+                    .sunrise-sunset-text {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .sunrise-up {
+                        display: flex;
+                        justify-content: space-around;
+                        padding: 30px 20px 15px 10px;
+                        .up {
+                            .up-arrow {
+                                height: 40px;
+                                width: 40px;
+                                margin-top: -10px;
+                            }
+                        }
+                        .sunrise {
+                            font-size: 18px;
+                            margin-left: 10px;
+                        }
+                    }
+                    .sunset-down {
+                        display: flex;
+                        justify-content: space-around;
+                        padding: 5px 20px 15px 10px;
+                        .down {
+                            .down-arrow {
+                                height: 40px;
+                                width: 40px;
+                                margin-top: -10px;
+                            }
+                        }
+                        .sunset {
+                            font-size: 18px;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+            .humidity-visibility-air {
+                display: flex;
+                .humidity {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    border-radius: 20px;
+                    padding: 20px 80px 22px 28px;
+                    margin-top: 30px;
+                    .humidity-text {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .humidity-percentage {
+                        font-size: 30px;
+                        padding: 40px 0 0 20px;
+                    }
+                    .humidity-description {
+                        font-size: 20px;
+                        padding: 35px 0 0 32px;
+                    }
+                }
+                .visibility {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    border-radius: 20px;
+                    padding: 20px 65px 22px 30px;
+                    margin: 30px 0 0 30px;
+                    .visibility-text {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .visible-km {
+                        padding: 34px 0 0 20px;
+                        display: flex;
+                        .show-visible {
+                            font-size: 40px;
+                            margin-left: 10px;
+                        }
+                        .km {
+                            font-size: 25px;
+                            margin: 12px 0 0 2px;
+                        }
+                    }
+                    .visibility-description {
+                        font-size: 20px;
+                        padding: 30px 0 0 35px;
+                    }
+                }
+                .air-quality {
+                    background: #bb86fc;
+                    max-width: max-content;
+                    border-radius: 20px;
+                    padding: 20px 50px 22px 28px;
+                    margin: 30px 0 0 30px;
+                    .air-quality-text {
+                        font-weight: bolder;
+                        font-size: 20px;
+                    }
+                    .air {
+                        font-size: 30px;
+                        padding: 40px 0 0 40px;
+                    }
+                    .air-condition-good {
+                        font-size: 16px;
+                        padding: 34.5px 37px 0 40px;
+                    }
+                    .air-condition-unhealthy-group {
+                        font-size: 14px;
+                        padding: 34.5px 0 0 15px;
+                        .air-condition-unhealthy-group-span {
+                            padding-left: 11px;
+                        }
+                    }
+                    .air-condition-very-unhealthy {
+                        font-size: 15px;
+                        padding: 34.5px 0 0 15px;
+                    }
+                    .air-condition-moderate,
+                    .air-condition-unhealthy,
+                    .air-condition-hazardous {
+                        font-size: 16px;
+                        padding: 34.5px 14px 0 28px;
+                    }
+                }
             }
         }
     }
-    .right {
-        margin-left: 20px;
-        .days-status {
-            margin: 10px 20px 20px 0;
-            font-weight: bolder;
-            font-size: 20px;
+    .error {
+        color: #ededed;
+        padding: 90px 0;
+        text-align: center;
+        .err {
+            font-size: 90px;
+            font-style: bolder;
+            padding: 40px 0;
         }
-        .days-update {
-            display: flex;
-            .second-day {
-                background: #bb86fc;
-                border-radius: 15px;
-                display: flex;
-                max-width: max-content;
-                .second-week-date-icon {
-                    padding: 20px 0 20px 20px;
-                    .second-day-week {
-                        font-weight: bolder;
-                        font-size: 20px;
-                    }
-                    .second-date {
-                        font-weight: bolder;
-                        font-size: 20px;
-                        margin: 5px 0;
-                    }
-                    .second-day-icon {
-                        margin: 15px 0 0 38px;
-                        .second-day-icon-bs {
-                            height: 40px;
-                            width: 40px;
-                        }
-                    }
-                }
-                .second-temp-condition-rain {
-                    margin: 0 0 0 15px;
-                    padding: 20px 20px 20px 5px;
-                    line-height: 30px;
-                    .second-day-temp {
-                        font-size: 30px;
-                        font-weight: 400;
-                    }
-                    .second-day-rain {
-                        display: flex;
-                        .second-rain-text {
-                            font-weight: 500;
-                        }
-                        .second-rain {
-                            margin-left: 5px;
-                        }
-                    }
-                }
-            }
-            .third-day {
-                background: #bb86fc;
-                max-width: max-content;
-                display: flex;
-                margin: 0 0 0 20px;
-                border-radius: 15px;
-                .third-week-date-icon {
-                    padding: 20px 0 20px 20px;
-                    .third-day-week {
-                        font-weight: bolder;
-                        font-size: 20px;
-                    }
-                    .third-date {
-                        font-weight: bolder;
-                        font-size: 20px;
-                        margin: 5px 0;
-                    }
-                    .third-day-icon {
-                        margin: 15px 0 0 38px;
-                        .third-day-icon-bs {
-                            height: 40px;
-                            width: 40px;
-                        }
-                    }
-                }
-                .third-temp-condition-rain {
-                    margin: 0 0 0 15px;
-                    padding: 20px 20px 20px 5px;
-                    line-height: 30px;
-                    .third-day-temp {
-                        font-size: 30px;
-                        font-weight: 400;
-                    }
-                    .third-day-rain {
-                        display: flex;
-                        .third-rain-text {
-                            font-weight: 500;
-                        }
-                        .third-rain {
-                            margin-left: 5px;
-                        }
-                    }
-                }
-            }
+        .error-message {
+            font-size: 30px;
         }
-        .today-status {
-            font-weight: bolder;
-            font-size: 20px;
-            margin: 40px 20px 20px 0;
+        .wrong-location {
+            font-size: 30px;
+            padding: 40px 0;
         }
-        .uv-wind-sun {
-            display: flex;
-            .uv {
-                background: #bb86fc;
-                max-width: max-content;
-                padding: 20px 80px 0 30px;
-                border-radius: 20px;
-                .uv-index {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .uv-value {
-                    font-size: 30px;
-                    padding: 90px 10px 0 60px;
-                }
-            }
-            .wind {
-                background: #bb86fc;
-                max-width: max-content;
-                padding: 20px 27px 20px 30px;
-                border-radius: 20px;
-                margin: 0 30px;
-                .wind-text {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .wind-speed {
-                    padding: 30px 20px 15px 20px;
-                    display: flex;
-                    .ws {
-                        font-size: 40px;
-                    }
-                    .kmh {
-                        font-size: 25px;
-                        margin: 12px 0 0 2px;
-                    }
-                }
-                .wind-direction-icon-class {
-                    display: flex;
-                    padding-left: 60px;
-                    padding-top: 10px;
-                    .wind-direction-icon {
-                        margin-right: 5px;
-                        .wind-slap-icon {
-                            margin-top: 6px;
-                            height: 12px;
-                            width: 15px;
-                        }
-                    }
-                    .wind-direction {
-                        font-size: 20px;
-                    }
-                }
-            }
-            .sunrise-sunset {
-                background: #bb86fc;
-                max-width: max-content;
-                border-radius: 20px;
-                padding: 20px 20px 15px 20px;
-                .sunrise-sunset-text {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .sunrise-up {
-                    display: flex;
-                    justify-content: space-around;
-                    padding: 30px 20px 15px 10px;
-                    .up {
-                        .up-arrow {
-                            height: 40px;
-                            width: 40px;
-                            margin-top: -10px;
-                        }
-                    }
-                    .sunrise {
-                        font-size: 18px;
-                        margin-left: 10px;
-                    }
-                }
-                .sunset-down {
-                    display: flex;
-                    justify-content: space-around;
-                    padding: 5px 20px 15px 10px;
-                    .down {
-                        .down-arrow {
-                            height: 40px;
-                            width: 40px;
-                            margin-top: -10px;
-                        }
-                    }
-                    .sunset {
-                        font-size: 18px;
-                        margin-left: 10px;
-                    }
-                }
-            }
+        .try-again {
+            font-size: 25px;
+            padding-bottom: 40px;
         }
-        .humidity-visibility-air {
-            display: flex;
-            .humidity {
-                background: #bb86fc;
-                max-width: max-content;
-                border-radius: 20px;
-                padding: 20px 80px 22px 28px;
-                margin-top: 30px;
-                .humidity-text {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .humidity-percentage {
-                    font-size: 30px;
-                    padding: 40px 0 0 20px;
-                }
-                .humidity-description {
-                    font-size: 20px;
-                    padding: 35px 0 0 32px;
-                }
-            }
-            .visibility {
-                background: #bb86fc;
-                max-width: max-content;
-                border-radius: 20px;
-                padding: 20px 65px 22px 30px;
-                margin: 30px 0 0 30px;
-                .visibility-text {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .visible-km {
-                    padding: 34px 0 0 20px;
-                    display: flex;
-                    .show-visible {
-                        font-size: 40px;
-                        margin-left: 10px;
-                    }
-                    .km {
-                        font-size: 25px;
-                        margin: 12px 0 0 2px;
-                    }
-                }
-                .visibility-description {
-                    font-size: 20px;
-                    padding: 30px 0 0 35px;
-                }
-            }
-            .air-quality {
-                background: #bb86fc;
-                max-width: max-content;
-                border-radius: 20px;
-                padding: 20px 50px 22px 28px;
-                margin: 30px 0 0 30px;
-                .air-quality-text {
-                    font-weight: bolder;
-                    font-size: 20px;
-                }
-                .air {
-                    font-size: 30px;
-                    padding: 40px 0 0 40px;
-                }
-                .air-condition-good {
-                    font-size: 16px;
-                    padding: 34.5px 37px 0 40px;
-                }
-                .air-condition-unhealthy-group {
-                    font-size: 14px;
-                    padding: 34.5px 0 0 15px;
-                    .air-condition-unhealthy-group-span {
-                        padding-left: 11px;
-                    }
-                }
-                .air-condition-very-unhealthy {
-                    font-size: 15px;
-                    padding: 34.5px 0 0 15px;
-                }
-                .air-condition-moderate,
-                .air-condition-unhealthy,
-                .air-condition-hazardous {
-                    font-size: 16px;
-                    padding: 34.5px 14px 0 28px;
-                }
-            }
+        .go-back-search {
+            font-size: 30px;
+            color: #bb86fc;
         }
     }
 }

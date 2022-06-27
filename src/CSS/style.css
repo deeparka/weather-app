@@ -51,7 +51,7 @@ body {
   border: transparent;
 }
 
-.weather-container {
+.error-or-not .weather-container {
   border: 1px solid #000;
   border-radius: 20px;
   max-width: -webkit-max-content;
@@ -69,12 +69,12 @@ body {
           justify-content: center;
 }
 
-.weather-container .left {
+.error-or-not .weather-container .left {
   margin-right: 70px;
   margin-top: 13px;
 }
 
-.weather-container .left .input-city-name-btn {
+.error-or-not .weather-container .left .input-city-name-btn {
   background: #bb86fc;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,54 +84,54 @@ body {
   margin-top: 20px;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name {
   margin-top: 13px;
   margin-left: 5px;
   border-radius: 10px;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .search-icon {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .search-icon {
   height: 13px;
   width: 15px;
   margin-right: 5px;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city {
   border: none;
   padding-left: 2px;
   font-size: 17px;
   background: #bb86fc;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city:focus {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city:focus {
   outline: none;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city::-webkit-input-placeholder {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city::-webkit-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
   color: #ededed;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city:-ms-input-placeholder {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city:-ms-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
   color: #ededed;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city::-ms-input-placeholder {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city::-ms-input-placeholder {
   font-size: 16px;
   font-weight: bolder;
   color: #ededed;
 }
 
-.weather-container .left .input-city-name-btn .input-city-name .city::placeholder {
+.error-or-not .weather-container .left .input-city-name-btn .input-city-name .city::placeholder {
   font-size: 16px;
   font-weight: bolder;
   color: #ededed;
 }
 
-.weather-container .left .input-city-name-btn .btn-class .submit-btn-class {
+.error-or-not .weather-container .left .input-city-name-btn .btn-class .submit-btn-class {
   background: #bb86fc;
   color: #fff;
   padding: 6px 5px 3px 5px;
@@ -143,25 +143,25 @@ body {
   max-width: fit-content;
 }
 
-.weather-container .left .input-city-name-btn .btn-class .submit-btn-class .target {
+.error-or-not .weather-container .left .input-city-name-btn .btn-class .submit-btn-class .target {
   height: 15px;
   width: 15px;
 }
 
-.weather-container .left .weather-temp {
+.error-or-not .weather-container .left .weather-temp {
   margin: 20px;
 }
 
-.weather-container .left .weather-temp .weather-icon {
+.error-or-not .weather-container .left .weather-temp .weather-icon {
   margin: 60px 0 60px 50px;
 }
 
-.weather-container .left .weather-temp .weather-icon .icon {
+.error-or-not .weather-container .left .weather-temp .weather-icon .icon {
   height: 180px;
   width: 200px;
 }
 
-.weather-container .left .weather-temp .temperature {
+.error-or-not .weather-container .left .weather-temp .temperature {
   margin: 20px 20px 40px 20px;
   font-size: 40px;
   display: -webkit-box;
@@ -170,41 +170,41 @@ body {
   font-weight: 500;
 }
 
-.weather-container .left .weather-temp .temperature .temperature-celsius {
+.error-or-not .weather-container .left .weather-temp .temperature .temperature-celsius {
   margin-right: 5px;
 }
 
-.weather-container .left .weather-temp .temperature .temperature-farenheit {
+.error-or-not .weather-container .left .weather-temp .temperature .temperature-farenheit {
   margin-left: 5px;
 }
 
-.weather-container .left .week-time {
+.error-or-not .weather-container .left .week-time {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 45px 20px 5px 42px;
 }
 
-.weather-container .left .week-time .day-of-week {
+.error-or-not .weather-container .left .week-time .day-of-week {
   font-size: 25px;
   margin-right: 3px;
 }
 
-.weather-container .left .week-time .time {
+.error-or-not .weather-container .left .week-time .time {
   font-size: 25px;
 }
 
-.weather-container .left .date {
+.error-or-not .weather-container .left .date {
   margin: 0 20px 5px 42px;
   font-size: 23px;
 }
 
-.weather-container .left .condition {
+.error-or-not .weather-container .left .condition {
   margin: 30px 20px 5px 42px;
   font-size: 18px;
 }
 
-.weather-container .left .city-state-country {
+.error-or-not .weather-container .left .city-state-country {
   margin: 30px 20px 5px 42px;
   padding: 30px 40px;
   border-radius: 15px;
@@ -218,33 +218,33 @@ body {
   max-width: max-content;
 }
 
-.weather-container .left .city-state-country .city-name {
+.error-or-not .weather-container .left .city-state-country .city-name {
   font-weight: bolder;
 }
 
-.weather-container .left .city-state-country .country-name,
-.weather-container .left .city-state-country .state {
+.error-or-not .weather-container .left .city-state-country .country-name,
+.error-or-not .weather-container .left .city-state-country .state {
   font-weight: bolder;
   margin-left: 5px;
 }
 
-.weather-container .right {
+.error-or-not .weather-container .right {
   margin-left: 20px;
 }
 
-.weather-container .right .days-status {
+.error-or-not .weather-container .right .days-status {
   margin: 10px 20px 20px 0;
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .days-update {
+.error-or-not .weather-container .right .days-update {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .days-update .second-day {
+.error-or-not .weather-container .right .days-update .second-day {
   background: #bb86fc;
   border-radius: 15px;
   display: -webkit-box;
@@ -255,56 +255,56 @@ body {
   max-width: max-content;
 }
 
-.weather-container .right .days-update .second-day .second-week-date-icon {
+.error-or-not .weather-container .right .days-update .second-day .second-week-date-icon {
   padding: 20px 0 20px 20px;
 }
 
-.weather-container .right .days-update .second-day .second-week-date-icon .second-day-week {
+.error-or-not .weather-container .right .days-update .second-day .second-week-date-icon .second-day-week {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .days-update .second-day .second-week-date-icon .second-date {
+.error-or-not .weather-container .right .days-update .second-day .second-week-date-icon .second-date {
   font-weight: bolder;
   font-size: 20px;
   margin: 5px 0;
 }
 
-.weather-container .right .days-update .second-day .second-week-date-icon .second-day-icon {
+.error-or-not .weather-container .right .days-update .second-day .second-week-date-icon .second-day-icon {
   margin: 15px 0 0 38px;
 }
 
-.weather-container .right .days-update .second-day .second-week-date-icon .second-day-icon .second-day-icon-bs {
+.error-or-not .weather-container .right .days-update .second-day .second-week-date-icon .second-day-icon .second-day-icon-bs {
   height: 40px;
   width: 40px;
 }
 
-.weather-container .right .days-update .second-day .second-temp-condition-rain {
+.error-or-not .weather-container .right .days-update .second-day .second-temp-condition-rain {
   margin: 0 0 0 15px;
   padding: 20px 20px 20px 5px;
   line-height: 30px;
 }
 
-.weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-temp {
+.error-or-not .weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-temp {
   font-size: 30px;
   font-weight: 400;
 }
 
-.weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain {
+.error-or-not .weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain .second-rain-text {
+.error-or-not .weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain .second-rain-text {
   font-weight: 500;
 }
 
-.weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain .second-rain {
+.error-or-not .weather-container .right .days-update .second-day .second-temp-condition-rain .second-day-rain .second-rain {
   margin-left: 5px;
 }
 
-.weather-container .right .days-update .third-day {
+.error-or-not .weather-container .right .days-update .third-day {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -316,68 +316,68 @@ body {
   border-radius: 15px;
 }
 
-.weather-container .right .days-update .third-day .third-week-date-icon {
+.error-or-not .weather-container .right .days-update .third-day .third-week-date-icon {
   padding: 20px 0 20px 20px;
 }
 
-.weather-container .right .days-update .third-day .third-week-date-icon .third-day-week {
+.error-or-not .weather-container .right .days-update .third-day .third-week-date-icon .third-day-week {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .days-update .third-day .third-week-date-icon .third-date {
+.error-or-not .weather-container .right .days-update .third-day .third-week-date-icon .third-date {
   font-weight: bolder;
   font-size: 20px;
   margin: 5px 0;
 }
 
-.weather-container .right .days-update .third-day .third-week-date-icon .third-day-icon {
+.error-or-not .weather-container .right .days-update .third-day .third-week-date-icon .third-day-icon {
   margin: 15px 0 0 38px;
 }
 
-.weather-container .right .days-update .third-day .third-week-date-icon .third-day-icon .third-day-icon-bs {
+.error-or-not .weather-container .right .days-update .third-day .third-week-date-icon .third-day-icon .third-day-icon-bs {
   height: 40px;
   width: 40px;
 }
 
-.weather-container .right .days-update .third-day .third-temp-condition-rain {
+.error-or-not .weather-container .right .days-update .third-day .third-temp-condition-rain {
   margin: 0 0 0 15px;
   padding: 20px 20px 20px 5px;
   line-height: 30px;
 }
 
-.weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-temp {
+.error-or-not .weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-temp {
   font-size: 30px;
   font-weight: 400;
 }
 
-.weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain {
+.error-or-not .weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain .third-rain-text {
+.error-or-not .weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain .third-rain-text {
   font-weight: 500;
 }
 
-.weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain .third-rain {
+.error-or-not .weather-container .right .days-update .third-day .third-temp-condition-rain .third-day-rain .third-rain {
   margin-left: 5px;
 }
 
-.weather-container .right .today-status {
+.error-or-not .weather-container .right .today-status {
   font-weight: bolder;
   font-size: 20px;
   margin: 40px 20px 20px 0;
 }
 
-.weather-container .right .uv-wind-sun {
+.error-or-not .weather-container .right .uv-wind-sun {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .uv-wind-sun .uv {
+.error-or-not .weather-container .right .uv-wind-sun .uv {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -386,17 +386,17 @@ body {
   border-radius: 20px;
 }
 
-.weather-container .right .uv-wind-sun .uv .uv-index {
+.error-or-not .weather-container .right .uv-wind-sun .uv .uv-index {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .uv-wind-sun .uv .uv-value {
+.error-or-not .weather-container .right .uv-wind-sun .uv .uv-value {
   font-size: 30px;
   padding: 90px 10px 0 60px;
 }
 
-.weather-container .right .uv-wind-sun .wind {
+.error-or-not .weather-container .right .uv-wind-sun .wind {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -406,28 +406,28 @@ body {
   margin: 0 30px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-text {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-text {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-speed {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-speed {
   padding: 30px 20px 15px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-speed .ws {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-speed .ws {
   font-size: 40px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-speed .kmh {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-speed .kmh {
   font-size: 25px;
   margin: 12px 0 0 2px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-direction-icon-class {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-direction-icon-class {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,21 +435,21 @@ body {
   padding-top: 10px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction-icon {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction-icon {
   margin-right: 5px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction-icon .wind-slap-icon {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction-icon .wind-slap-icon {
   margin-top: 6px;
   height: 12px;
   width: 15px;
 }
 
-.weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction {
+.error-or-not .weather-container .right .uv-wind-sun .wind .wind-direction-icon-class .wind-direction {
   font-size: 20px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -458,12 +458,12 @@ body {
   padding: 20px 20px 15px 20px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-sunset-text {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-sunset-text {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -472,18 +472,18 @@ body {
   padding: 30px 20px 15px 10px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up .up .up-arrow {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up .up .up-arrow {
   height: 40px;
   width: 40px;
   margin-top: -10px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up .sunrise {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunrise-up .sunrise {
   font-size: 18px;
   margin-left: 10px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -492,24 +492,24 @@ body {
   padding: 5px 20px 15px 10px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down .down .down-arrow {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down .down .down-arrow {
   height: 40px;
   width: 40px;
   margin-top: -10px;
 }
 
-.weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down .sunset {
+.error-or-not .weather-container .right .uv-wind-sun .sunrise-sunset .sunset-down .sunset {
   font-size: 18px;
   margin-left: 10px;
 }
 
-.weather-container .right .humidity-visibility-air {
+.error-or-not .weather-container .right .humidity-visibility-air {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .humidity-visibility-air .humidity {
+.error-or-not .weather-container .right .humidity-visibility-air .humidity {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -519,22 +519,22 @@ body {
   margin-top: 30px;
 }
 
-.weather-container .right .humidity-visibility-air .humidity .humidity-text {
+.error-or-not .weather-container .right .humidity-visibility-air .humidity .humidity-text {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .humidity-visibility-air .humidity .humidity-percentage {
+.error-or-not .weather-container .right .humidity-visibility-air .humidity .humidity-percentage {
   font-size: 30px;
   padding: 40px 0 0 20px;
 }
 
-.weather-container .right .humidity-visibility-air .humidity .humidity-description {
+.error-or-not .weather-container .right .humidity-visibility-air .humidity .humidity-description {
   font-size: 20px;
   padding: 35px 0 0 32px;
 }
 
-.weather-container .right .humidity-visibility-air .visibility {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -544,34 +544,34 @@ body {
   margin: 30px 0 0 30px;
 }
 
-.weather-container .right .humidity-visibility-air .visibility .visibility-text {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility .visibility-text {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .humidity-visibility-air .visibility .visible-km {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility .visible-km {
   padding: 34px 0 0 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.weather-container .right .humidity-visibility-air .visibility .visible-km .show-visible {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility .visible-km .show-visible {
   font-size: 40px;
   margin-left: 10px;
 }
 
-.weather-container .right .humidity-visibility-air .visibility .visible-km .km {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility .visible-km .km {
   font-size: 25px;
   margin: 12px 0 0 2px;
 }
 
-.weather-container .right .humidity-visibility-air .visibility .visibility-description {
+.error-or-not .weather-container .right .humidity-visibility-air .visibility .visibility-description {
   font-size: 20px;
   padding: 30px 0 0 35px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality {
   background: #bb86fc;
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
@@ -581,39 +581,70 @@ body {
   margin: 30px 0 0 30px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-quality-text {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-quality-text {
   font-weight: bolder;
   font-size: 20px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air {
   font-size: 30px;
   padding: 40px 0 0 40px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-good {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-good {
   font-size: 16px;
   padding: 34.5px 37px 0 40px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy-group {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy-group {
   font-size: 14px;
   padding: 34.5px 0 0 15px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy-group .air-condition-unhealthy-group-span {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy-group .air-condition-unhealthy-group-span {
   padding-left: 11px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-very-unhealthy {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-very-unhealthy {
   font-size: 15px;
   padding: 34.5px 0 0 15px;
 }
 
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-moderate,
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy,
-.weather-container .right .humidity-visibility-air .air-quality .air-condition-hazardous {
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-moderate,
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-unhealthy,
+.error-or-not .weather-container .right .humidity-visibility-air .air-quality .air-condition-hazardous {
   font-size: 16px;
   padding: 34.5px 14px 0 28px;
+}
+
+.error-or-not .error {
+  color: #ededed;
+  padding: 90px 0;
+  text-align: center;
+}
+
+.error-or-not .error .err {
+  font-size: 90px;
+  font-style: bolder;
+  padding: 40px 0;
+}
+
+.error-or-not .error .error-message {
+  font-size: 30px;
+}
+
+.error-or-not .error .wrong-location {
+  font-size: 30px;
+  padding: 40px 0;
+}
+
+.error-or-not .error .try-again {
+  font-size: 25px;
+  padding-bottom: 40px;
+}
+
+.error-or-not .error .go-back-search {
+  font-size: 30px;
+  color: #bb86fc;
 }
 /*# sourceMappingURL=style.css.map */
