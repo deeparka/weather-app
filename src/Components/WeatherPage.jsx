@@ -1,659 +1,310 @@
 import React, { useEffect, useState } from "react";
-import { GoSearch } from "react-icons/go";
-import { BsCloudRainHeavy, BsCloudRain } from "react-icons/bs";
-import {
-    WiDaySunny,
-    WiSunset,
-    WiSunrise,
-    WiCloud,
-    WiDayCloudy,
-    WiNightClear,
-    WiCloudy,
-    WiDayHail,
-    WiDaySnowWind,
-    WiDaySleet,
-    WiLightning,
-    WiSnowWind,
-    WiSnowflakeCold,
-    WiDayRainMix,
-    WiSleet,
-    WiNightAltRainMix,
-    WiNightSnowWind,
-    WiNightSleet,
-    WiNightCloudy,
-    WiNightHail,
-    WiNightAltSnow,
-    WiDaySnow,
-    WiShowers,
-    WiNightStormShowers,
-    WiDayStormShowers,
-    WiDaySnowThunderstorm,
-    WiNightSnowThunderstorm,
-    WiRainMix,
-    WiSprinkle,
-    WiRain,
-} from "react-icons/wi";
-import { BiTargetLock, BiCloudLightRain } from "react-icons/bi";
-import { GiWindSlap, GiFog } from "react-icons/gi";
-import { RiMistFill } from "react-icons/ri";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { BsSunriseFill, BsSunsetFill } from "react-icons/bs";
+import { WiHumidity } from "react-icons/wi";
+import { Link, useLocation } from "react-router-dom";
+import NavBar from "../lib/NavBar";
+import SideBar from "../lib/SideBar";
+import { getDate, getDayOfWeek, twelveHourTime } from "../lib/helper";
 
 function WeatherPage() {
-    const location = useLocation();
-    // console.log(location);
-    const { city } = location.state;
+  const location = useLocation();
+  // console.log(location);
+  const { city } = location.state;
 
-    const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const [isError, setIsError] = useState(false);
 
-    const [error, setError] = useState(null);
-    const [isError, setIsError] = useState(false);
+  const [stateName, setStateName] = useState(``);
+  const [country, setCountry] = useState(``);
+  const [time, setTime] = useState(``);
+  const [maxTemperature, setMaxTemperature] = useState(0);
+  const [minTemperature, setMinTemperature] = useState(0);
+  const [weatherCondition, setWeatherCondition] = useState(``);
+  const [weatherConditionIcon, setWeatherConditionIcon] = useState(``);
+  const [uvIndex, setUVIndex] = useState(0);
+  const [sunRise, setSunRise] = useState(``);
+  const [sunSet, setSunSet] = useState(``);
+  const [humidity, setHumidity] = useState(0);
+  const [windSpeed, setWindSpeed] = useState(0);
+  const [windDirection, setWindDirection] = useState(``);
+  const [visibility, setVisibility] = useState(0);
+  const [airQuality, setAirQuality] = useState(0);
 
-    const [cityName, setCityName] = useState(``);
+  const [secondDayTime, setSecondDayTime] = useState(``);
+  const [secondDayTemperature, setSecondDayTemperature] = useState(0);
+  const [secondDayCondition, setSecondDayCondition] = useState(``);
+  const [secondDayRain, setSecondDayRain] = useState(0);
 
-    const [stateName, setStateName] = useState(``);
-    const [country, setCountry] = useState(``);
-    const [time, setTime] = useState(``);
-    const [temperatureCelsius, setTemperatureCelsius] = useState(0);
-    const [temperatureFarenheit, setTemperatureFarenheit] = useState(0);
-    const [weatherCondition, setWeatherCondition] = useState(``);
-    const [uvIndex, setUVIndex] = useState(0);
-    const [sunRise, setSunRise] = useState(``);
-    const [sunSet, setSunSet] = useState(``);
-    const [humidity, setHumidity] = useState(0);
-    const [windSpeed, setWindSpeed] = useState(0);
-    const [windDirection, setWindDirection] = useState(``);
-    const [visibility, setVisibility] = useState(0);
-    const [airQuality, setAirQuality] = useState(0);
+  const [thirdDayTime, setThirdDayTime] = useState(``);
+  const [thirdDayTemperature, setThirdDayTemperature] = useState(0);
+  const [thirdDayCondition, setThirdDayCondition] = useState(``);
+  const [thirdDayRain, setThirdDayRain] = useState(0);
 
-    const [secondDayTime, setSecondDayTime] = useState(``);
-    const [secondDayTemperature, setSecondDayTemperature] = useState(0);
-    const [secondDayCondition, setSecondDayCondition] = useState(``);
-    const [secondDayRain, setSecondDayRain] = useState(0);
-    const [thirdDayTime, setThirdDayTime] = useState(``);
-    const [thirdDayTemperature, setThirdDayTemperature] = useState(0);
-    const [thirdDayCondition, setThirdDayCondition] = useState(``);
-    const [thirdDayRain, setThirdDayRain] = useState(0);
+  const [hourlyEpoch, setHourlyEpoch] = useState([]);
+  const [hourlyTemperature, setHourlyTemperature] = useState([]);
+  let tempCount = 0;
 
-    const [isDay, setIsDay] = useState(0);
+  const [hourlyWeatherCondition, setHourlyWeatherCondition] = useState([]);
+  let weatherConditionCount = 0;
 
-    useEffect(() => {
-        const weather = async () =>
-            await fetch(
-                `https://api.weatherapi.com/v1/forecast.json?key=9999ea3e3ce6458d813170909212210&q=${city}&days=3&aqi=yes&alerts=yes`
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    // console.log(data);
-                    setStateName(data.location.region);
-                    setCountry(data.location.country);
-                    setTime(data.location.localtime_epoch);
-                    setTemperatureCelsius(data.current.temp_c);
-                    setTemperatureFarenheit(data.current.temp_f);
-                    setWeatherCondition(data.current.condition.text);
-                    setUVIndex(data.current.uv);
-                    setHumidity(data.current.humidity);
-                    setSunRise(data.forecast.forecastday[0].astro.sunrise);
-                    setSunSet(data.forecast.forecastday[0].astro.sunset);
-                    setWindSpeed(data.current.wind_kph);
-                    setWindDirection(data.current.wind_dir);
-                    setVisibility(data.current.vis_km);
-                    setAirQuality(data.current.air_quality.co);
-                    setSecondDayTime(data.forecast.forecastday[1].date_epoch);
-                    setSecondDayTemperature(
-                        data.forecast.forecastday[1].day.avgtemp_c
-                    );
-                    setSecondDayCondition(
-                        data.forecast.forecastday[1].day.condition.text
-                    );
-                    setSecondDayRain(
-                        data.forecast.forecastday[1].day.daily_chance_of_rain
-                    );
-                    setThirdDayTime(data.forecast.forecastday[2].date_epoch);
-                    setThirdDayTemperature(
-                        data.forecast.forecastday[2].day.avgtemp_c
-                    );
-                    setThirdDayCondition(
-                        data.forecast.forecastday[2].day.condition.text
-                    );
-                    setThirdDayRain(
-                        data.forecast.forecastday[2].day.daily_chance_of_rain
-                    );
-                    setIsDay(data.current.is_day);
-                })
-                .catch((err) => {
-                    // console.log(err.message);
-                    setError(err.message);
-                    setIsError(true);
-                });
-        weather();
-    }, [city]);
+  const [hourlyWeatherConditionIcon, setHourlyWeatherConditionIcon] = useState(
+    []
+  );
+  let weatherConditionIconCount = 0;
 
-    const showWeather = (e) => {
-        e.preventDefault();
-        navigate("/weather", {
-            state: {
-                city: cityName,
-            },
+  useEffect(() => {
+    const hourlyEpochArray = [];
+    const hourlyTemperatureArray = [];
+    const hourlyWeatherConditionArray = [];
+    const hourlyWeatherConditionIconArray = [];
+
+    const weather = async () =>
+      await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${city}&days=3&aqi=yes&alerts=yes`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setStateName(data.location.region);
+          setCountry(data.location.country);
+
+          // Day 1 (current day)
+          setTime(data.location.localtime_epoch);
+          setMaxTemperature(data.forecast.forecastday[0].day.maxtemp_c);
+          setMinTemperature(data.forecast.forecastday[0].day.mintemp_c);
+          setWeatherCondition(data.current.condition.text);
+          setWeatherConditionIcon(data.current.condition.icon);
+          setUVIndex(data.current.uv);
+          setHumidity(data.current.humidity);
+          setSunRise(data.forecast.forecastday[0].astro.sunrise);
+          setSunSet(data.forecast.forecastday[0].astro.sunset);
+          setWindSpeed(data.current.wind_kph);
+          setWindDirection(data.current.wind_dir);
+          setVisibility(data.current.vis_km);
+          setAirQuality(data.current.air_quality.co);
+
+          // Day 2
+          setSecondDayTime(data.forecast.forecastday[1].date_epoch);
+          setSecondDayTemperature(data.forecast.forecastday[1].day.avgtemp_c);
+          setSecondDayCondition(
+            data.forecast.forecastday[1].day.condition.text
+          );
+          setSecondDayRain(
+            data.forecast.forecastday[1].day.daily_chance_of_rain
+          );
+
+          // Day 3
+          setThirdDayTime(data.forecast.forecastday[2].date_epoch);
+          setThirdDayTemperature(data.forecast.forecastday[2].day.avgtemp_c);
+          setThirdDayCondition(data.forecast.forecastday[2].day.condition.text);
+          setThirdDayRain(
+            data.forecast.forecastday[2].day.daily_chance_of_rain
+          );
+
+          // 24 hours time epoch
+          data.forecast.forecastday[0].hour.map((hour) =>
+            hourlyEpochArray.push(hour["time_epoch"])
+          );
+          setHourlyEpoch(hourlyEpochArray);
+
+          // 24 hours temperature
+          data.forecast.forecastday[0].hour.map((hour) =>
+            hourlyTemperatureArray.push(hour["temp_c"])
+          );
+          setHourlyTemperature(hourlyTemperatureArray);
+
+          // 24 hours weather condition
+          data.forecast.forecastday[0].hour.map((hour) =>
+            hourlyWeatherConditionArray.push(hour["condition"].text)
+          );
+          setHourlyWeatherCondition(hourlyWeatherConditionArray);
+
+          // 24 hours weather condition icon
+          data.forecast.forecastday[0].hour.map((hour) =>
+            hourlyWeatherConditionIconArray.push(hour["condition"].icon)
+          );
+          setHourlyWeatherConditionIcon(hourlyWeatherConditionIconArray);
+        })
+        .catch((err) => {
+          // console.log(err.message);
+          setError(err.message);
+          setIsError(true);
         });
-    };
+    weather();
+  }, [city]);
 
-    const getStandardTimes = (time) => {
-        const utcSeconds = time;
-        const standardTime = new Date(0); // The 0 there is the key, which sets the date to the epoch
-        standardTime.setUTCSeconds(utcSeconds);
-        // console.log(standardTime);
-        return standardTime;
-    };
-
-    const twelveHourTime = (time) => {
-        const dt = getStandardTimes(time);
-        let hours = dt.getHours(); // gives the value in 24 hours format
-        const AmOrPm = hours >= 12 ? "PM" : "AM";
-        hours = hours % 12 || 12;
-        let minutes = dt.getMinutes().toString();
-        if (minutes.length === 1) {
-            minutes = "0" + minutes;
-        }
-        const finalTime = hours + ":" + minutes + " " + AmOrPm;
-        // console.log(finalTime);
-        return finalTime;
-    };
-
-    const getDayOfWeek = (time) => {
-        var timestamp = time;
-        var a = new Date(timestamp * 1000);
-        var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        var dayOfWeek = days[a.getDay()];
-        // console.log(dayOfWeek);
-        return dayOfWeek;
-    };
-
-    const getDate = (time) => {
-        const dt = getStandardTimes(time);
-        // console.log(dt);
-        const day = dt.getDate();
-        // console.log(day);
-
-        const monthArray = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ];
-
-        let month = monthArray[dt.getMonth()];
-        // console.log(month);
-
-        const year = dt.getFullYear();
-        // console.log(year);
-
-        return month + " " + day + ", " + year;
-    };
-
-    const roundFigure = (element) => {
-        element = Math.round(element);
-        if (element < 10) return "0" + element.toString();
-        return element;
-    };
-
-    const weatherLogo = (condition, className) => {
-        // eslint-disable-next-line default-case
-        switch (condition) {
-            case "Sunny":
-                return <WiDaySunny className={className} />;
-            case "Clear":
-                return <WiNightClear className={className} />;
-            case isDay === 0 && "Partly cloudy":
-                return <WiNightCloudy className={className} />;
-            case "Partly cloudy":
-                return <WiDayCloudy className={className} />;
-            case "Cloudy":
-                return <WiCloud className={className} />;
-            case "Overcast":
-                return <WiCloudy className={className} />;
-            case "Mist":
-                return <RiMistFill className={className} />;
-            case isDay === 0 && "Patchy rain possible":
-                return <WiNightHail className={className} />;
-            case "Patchy rain possible":
-                return <WiDayHail className={className} />;
-            case isDay === 0 && "Patchy snow possible":
-                return <WiNightSnowWind className={className} />;
-            case "Patchy snow possible":
-                return <WiDaySnowWind className={className} />;
-            case isDay === 0 && "Patchy sleet possible":
-                return <WiNightSleet className={className} />;
-            case isDay === 0 && "Light sleet showers":
-                return <WiNightSleet className={className} />;
-            case isDay === 0 && "Moderate or heavy sleet showers":
-                return <WiNightSleet className={className} />;
-            case "Patchy sleet possible":
-                return <WiDaySleet className={className} />;
-            case "Light sleet showers":
-                return <WiDaySleet className={className} />;
-            case "Moderate or heavy sleet showers":
-                return <WiDaySleet className={className} />;
-            case "Thundery outbreaks possible":
-                return <WiLightning className={className} />;
-            case "Blowing snow":
-                return <WiSnowWind className={className} />;
-            case "Blizzard":
-                return <WiSnowflakeCold className={className} />;
-            case "Ice pellets":
-                return <WiSnowflakeCold className={className} />;
-            case "Moderate or heavy showers of ice pellets":
-                return <WiSnowflakeCold className={className} />;
-            case "Light showers of ice pellets":
-                return <WiSnowflakeCold className={className} />;
-            case "Fog":
-                return <GiFog className={className} />;
-            case "Freezing fog":
-                return <GiFog className={className} />;
-            case "Light rain":
-                return <BiCloudLightRain className={className} />;
-            case "Light drizzle":
-                return <BiCloudLightRain className={className} />;
-            case "Freezing drizzle":
-                return <WiRainMix className={className} />;
-            case "Heavy freezing drizzle":
-                return <WiRainMix className={className} />;
-            case "Patchy freezing drizzle possible":
-                return <WiRainMix className={className} />;
-            case isDay === 0 && "Patchy light drizzle":
-                return <WiNightAltRainMix className={className} />;
-            case isDay === 0 && "Patchy light rain":
-                return <WiNightAltRainMix className={className} />;
-            case "Patchy light drizzle":
-                return <WiDayRainMix className={className} />;
-            case "Patchy light rain":
-                return <WiDayRainMix className={className} />;
-            case "Moderate rain at times":
-                return <BsCloudRain className={className} />;
-            case "Moderate rain":
-                return <BsCloudRain className={className} />;
-            case "Heavy rain":
-                return <BsCloudRainHeavy className={className} />;
-            case "Heavy rain at times":
-                return <BsCloudRainHeavy className={className} />;
-            case "Light freezing rain":
-                return <WiRain className={className} />;
-            case "Moderate or heavy freezing rain":
-                return <WiRain className={className} />;
-            case "Light sleet":
-                return <WiSleet className={className} />;
-            case "Moderate or heavy sleet":
-                return <WiSleet className={className} />;
-            case isDay === 0 && "Patchy light snow":
-                return <WiNightAltSnow className={className} />;
-            case isDay === 0 && "Patchy moderate snow":
-                return <WiNightAltSnow className={className} />;
-            case isDay === 0 && "Patchy heavy snow":
-                return <WiNightAltSnow className={className} />;
-            case isDay === 0 && "Light snow":
-                return <WiNightAltSnow className={className} />;
-            case isDay === 0 && "Moderate snow":
-                return <WiNightAltSnow className={className} />;
-            case isDay === 0 && "Heavy snow":
-                return <WiNightAltSnow className={className} />;
-            case "Patchy light snow":
-                return <WiDaySnow className={className} />;
-            case "Patchy moderate snow":
-                return <WiDaySnow className={className} />;
-            case "Patchy heavy snow":
-                return <WiDaySnow className={className} />;
-            case "Light snow":
-                return <WiDaySnow className={className} />;
-            case "Moderate snow":
-                return <WiDaySnow className={className} />;
-            case "Heavy snow":
-                return <WiDaySnow className={className} />;
-            case "Light rain shower":
-                return <WiShowers className={className} />;
-            case "Moderate or heavy rain shower":
-                return <WiShowers className={className} />;
-            case "Torrential rain shower":
-                return <WiShowers className={className} />;
-            case "Moderate or heavy snow showers":
-                return <WiSprinkle className={className} />;
-            case "Light snow showers":
-                return <WiSprinkle className={className} />;
-            case isDay === 0 && "Moderate or heavy rain with thunder":
-                return <WiNightStormShowers className={className} />;
-            case isDay === 0 && "Patchy light rain with thunder":
-                return <WiNightStormShowers className={className} />;
-            case "Moderate or heavy rain with thunder":
-                return <WiDayStormShowers className={className} />;
-            case "Patchy light rain with thunder":
-                return <WiDayStormShowers className={className} />;
-            case isDay === 0 && "Patchy light snow with thunder":
-                return <WiNightSnowThunderstorm className={className} />;
-            case isDay === 0 && "Moderate or heavy snow with thunder":
-                return <WiNightSnowThunderstorm className={className} />;
-            case "Patchy light snow with thunder":
-                return <WiDaySnowThunderstorm className={className} />;
-            case "Moderate or heavy snow with thunder":
-                return <WiDaySnowThunderstorm className={className} />;
-        }
-    };
-
-    const visibilityDescription = (visibility) => {
-        if (visibility < 0) {
-            return `Very Low`;
-        } else if (visibility > 0 && visibility < 10) {
-            return `Low`;
-        } else if (visibility >= 10 && visibility < 20) {
-            return `Average`;
-        } else {
-            return `Good`;
-        }
-    };
-
-    const humidityDescription = (humidity) => {
-        if (humidity < 25) {
-            return "Low";
-        } else if (humidity >= 25 && humidity < 30) {
-            return "Fair";
-        } else if (humidity >= 30 && humidity < 60) {
-            return "Good";
-        } else if (humidity >= 60 && humidity < 70) {
-            return "Bad";
-        } else {
-            return "High";
-        }
-    };
-
-    const airQualityDescription = (airQuality) => {
-        if (airQuality >= 0 && airQuality <= 50) {
-            return "Good";
-        } else if (airQuality >= 51 && airQuality <= 100) {
-            return "Moderate";
-        } else if (airQuality >= 101 && airQuality <= 150) {
-            return `Unhealthy for Sensitive Groups`;
-        } else if (airQuality >= 151 && airQuality <= 200) {
-            return "Unhealthy";
-        } else if (airQuality >= 201 && airQuality <= 300) {
-            return "Very Unhealthy";
-        } else {
-            return "Hazardous";
-        }
-    };
-
-    return (
-        <div className="error-or-not">
-            {!isError && (
-                <div className="weather-container">
-                    <div className="left">
-                        <div className="input-city-name-btn">
-                            <div className="input-city-name">
-                                <GoSearch className="search-icon" />
-                                <input
-                                    type="text"
-                                    placeholder="Enter City Name....."
-                                    className="city"
-                                    value={cityName}
-                                    onChange={(e) =>
-                                        setCityName(e.target.value)
-                                    }
-                                />
-                            </div>
-                            <div className="btn-class">
-                                <form
-                                    action=""
-                                    onSubmit={showWeather}
-                                    className="form-btn"
-                                >
-                                    <button
-                                        type="submit"
-                                        className="submit-btn-class"
-                                    >
-                                        <BiTargetLock className="target" />
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div className="weather-temp">
-                            <div className="weather-icon">
-                                {weatherLogo(weatherCondition, "icon")}
-                            </div>
-
-                            <div className="temperature">
-                                <div className="temperature-celsius">
-                                    {temperatureCelsius}°C
-                                </div>
-                                <div className="slash"> / </div>
-                                <div className="temperature-farenheit">
-                                    {temperatureFarenheit}°F
-                                </div>
-                            </div>
-                        </div>
-                        <div className="week-time">
-                            <div className="day-of-week">
-                                {getDayOfWeek(time)},
-                            </div>
-                            <div className="time">{twelveHourTime(time)}</div>
-                        </div>
-                        <div className="date">{getDate(time)}</div>
-                        <div className="condition">{weatherCondition}</div>
-                        <div className="city-state-country">
-                            <div className="city-name">{city},</div>
-                            <div className="state">{stateName},</div>
-                            <div className="country-name">{country}</div>
-                        </div>
-                    </div>
-                    <div className="right">
-                        <div className="days-status">Upcoming Days</div>
-                        <div className="days-update">
-                            <div className="second-day">
-                                <div className="second-week-date-icon">
-                                    <div className="second-day-week">
-                                        {getDayOfWeek(secondDayTime)}
-                                    </div>
-                                    <div className="second-date">
-                                        {getDate(secondDayTime)}
-                                    </div>
-                                    <div className="second-day-icon">
-                                        {weatherLogo(
-                                            secondDayCondition,
-                                            "second-day-icon-bs"
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="second-temp-condition-rain">
-                                    <div className="second-day-temp">
-                                        {secondDayTemperature}°C
-                                    </div>
-                                    <div className="second-day-condition">
-                                        {secondDayCondition}
-                                    </div>
-                                    <div className="second-day-rain">
-                                        <div className="second-rain-text">
-                                            Rain:
-                                        </div>
-                                        <div className="second-rain">
-                                            {secondDayRain}%
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="third-day">
-                                <div className="third-week-date-icon">
-                                    <div className="third-day-week">
-                                        {getDayOfWeek(thirdDayTime)}
-                                    </div>
-                                    <div className="third-date">
-                                        {getDate(thirdDayTime)}
-                                    </div>
-                                    <div className="third-day-icon">
-                                        {weatherLogo(
-                                            thirdDayCondition,
-                                            "third-day-icon-bs"
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="third-temp-condition-rain">
-                                    <div className="third-day-temp">
-                                        {thirdDayTemperature}°C
-                                    </div>
-                                    <div className="third-day-condition">
-                                        {thirdDayCondition}
-                                    </div>
-                                    <div className="third-day-rain">
-                                        <div className="third-rain-text">
-                                            Rain:
-                                        </div>
-                                        <div className="third-rain">
-                                            {thirdDayRain}%
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="today-status">Today's Status</div>
-                        <div className="uv-wind-sun">
-                            <div className="uv">
-                                <div className="uv-index">UV Index</div>
-                                <div className="uv-value">{uvIndex}</div>
-                            </div>
-                            <div className="wind">
-                                <div className="wind-text">Wind Speed</div>
-                                <div className="wind-speed">
-                                    <div className="ws">
-                                        {roundFigure(windSpeed)}
-                                    </div>
-                                    <div className="kmh">Km/h</div>
-                                </div>
-                                <div className="wind-direction-icon-class">
-                                    <div className="wind-direction-icon">
-                                        <GiWindSlap className="wind-slap-icon" />
-                                    </div>
-                                    <div className="wind-direction">
-                                        {windDirection}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="sunrise-sunset">
-                                <div className="sunrise-sunset-text">
-                                    Sunrise & Sunset
-                                </div>
-                                <div className="sunrise-up">
-                                    <div className="up">
-                                        <WiSunrise className="up-arrow" />
-                                    </div>
-                                    <div className="sunrise">{sunRise}</div>
-                                </div>
-                                <div className="sunset-down">
-                                    <div className="down">
-                                        <WiSunset className="down-arrow" />
-                                    </div>
-                                    <div className="sunset">{sunSet}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="humidity-visibility-air">
-                            <div className="humidity">
-                                <div className="humidity-text">Humidity</div>
-                                <div className="humidity-percentage">
-                                    {humidity}%
-                                </div>
-                                <div className="humidity-description">
-                                    {humidityDescription(humidity)}
-                                </div>
-                            </div>
-                            <div className="visibility">
-                                <div className="visibility-text">
-                                    Visibility
-                                </div>
-                                <div className="visible-km">
-                                    <div className="show-visible">
-                                        {roundFigure(visibility)}
-                                    </div>
-                                    <div className="km">Km</div>
-                                </div>
-                                <div className="visibility-description">
-                                    {visibilityDescription(
-                                        Math.round(visibility)
-                                    )}
-                                </div>
-                            </div>
-                            <div className="air-quality">
-                                <div className="air-quality-text">
-                                    Air Quality
-                                </div>
-                                <div className="air">
-                                    {Math.round(airQuality)}
-                                </div>
-                                {airQualityDescription(airQuality) ===
-                                    "Good" && (
-                                    <div className="air-condition-good">
-                                        {airQualityDescription(airQuality)}
-                                    </div>
-                                )}
-                                {airQualityDescription(airQuality) ===
-                                    "Moderate" && (
-                                    <div className="air-condition-moderate">
-                                        {airQualityDescription(airQuality)}
-                                    </div>
-                                )}
-                                {airQualityDescription(airQuality) ===
-                                    "Unhealthy for Sensitive Groups" && (
-                                    <div className="air-condition-unhealthy-group">
-                                        <span className="air-condition-unhealthy-group-span">
-                                            {airQualityDescription(
-                                                airQuality
-                                            ).slice(0, 13)}
-                                        </span>
-                                        <br />
-                                        {airQualityDescription(
-                                            airQuality
-                                        ).slice(14)}
-                                    </div>
-                                )}
-                                {airQualityDescription(airQuality) ===
-                                    "Unhealthy" && (
-                                    <div className="air-condition-unhealthy">
-                                        {airQualityDescription(airQuality)}
-                                    </div>
-                                )}
-                                {airQualityDescription(airQuality) ===
-                                    "Very Unhealthy" && (
-                                    <div className="air-condition-very-unhealthy">
-                                        {airQualityDescription(airQuality)}
-                                    </div>
-                                )}
-                                {airQualityDescription(airQuality) ===
-                                    "Hazardous" && (
-                                    <div className="air-condition-hazardous">
-                                        {airQualityDescription(airQuality)}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <div className="text-white">
+      {!isError && (
+        <div>
+          {/* NavBar */}
+          <NavBar />
+          {/* SideBar & Weather Details */}
+          <div className="flex">
+            {/* SideBar */}
+            <SideBar />
+            {/* Weather Details */}
+            <main className="bg-customBrownOne pt-4 pb-12 mx-8 md:mx-14 lg:mx-[80px]">
+              <div className="text-customBrownFour">
+                <h2 className="text-center my-6">
+                  {city}, {stateName}, {country}
+                </h2>
+                <h4 className="text-center mb-12">
+                  {getDayOfWeek(time)} {getDate(time)} {twelveHourTime(time)}
+                </h4>
+              </div>
+              <section className="flex flex-wrap justify-start items-start space-x-8">
+                {/* Today Weather Details */}
+                <div className="text-customBrownFour">
+                  <div className="text-lg bg-customBrownTwo py-5 px-8 w-fit rounded-xl shadow-lg space-y-6">
+                    <section className="flex flex-col items-center">
+                      <img
+                        src={weatherConditionIcon}
+                        alt=""
+                        className="h-20 w-20"
+                      />
+                      <h3 className="">{weatherCondition}</h3>
+                    </section>
+                    <section className="flex justify-center items-center space-x-5">
+                      <div className="flex flex-col items-center">
+                        <p className="">Min</p>
+                        <p className="">{minTemperature}°C</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <p className="">Max</p>
+                        <p className="">{maxTemperature}°C</p>
+                      </div>
+                    </section>
+                    <section className="flex justify-start items-center space-x-5 ">
+                      <div className="flex flex-col items-center">
+                        <BsSunriseFill className="h-6 w-6" />
+                        <p className="">{sunRise}</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <BsSunsetFill className="h-6 w-6" />
+                        <p className="">{sunSet}</p>
+                      </div>
+                    </section>
+                    <section className="flex justify-center items-center space-x-2">
+                      <p className="font-bold">UV Index</p>
+                      <p className="text-2xl">{uvIndex}</p>
+                    </section>
+                    <section className="flex justify-center items-center space-x-2">
+                      <WiHumidity className="h-6 w-6" />
+                      <p className="">{humidity}</p>
+                    </section>
+                    <section className="flex justify-center items-start space-x-2">
+                      <p className="font-bold">Wind Speed</p>
+                      <p className="">{windSpeed}</p>
+                    </section>
+                    <section className="flex justify-center items-center space-x-2">
+                      <p className="font-bold">Wind Direction</p>
+                      <p className="">{windDirection}</p>
+                    </section>
+                    <section className="flex justify-center items-center space-x-2">
+                      <p className="font-bold">Visibility</p>
+                      <p className="">{visibility}</p>
+                    </section>
+                    <section className="flex justify-center items-center space-x-2">
+                      <p className="font-bold">Air Quality</p>
+                      <p className="">{Math.round(airQuality)}</p>
+                    </section>
+                  </div>
                 </div>
-            )}
-            {isError && (
-                <div className="error">
-                    <div className="err">404 Error</div>
-                    <div className="error-message">{error}</div>
-                    <div className="wrong-location">
-                        There doesn't exist a city named "{city || cityName}"
-                    </div>
-                    <div className="try-again">Please search a valid city</div>
-                    <Link to="/" className="go-back-search">
-                        Go Back to Search
-                    </Link>
+                {/* 3 days forecast */}
+                <div className="py-7 flex flex-col space-y-10">
+                  <div className="text-customBrownFour pt-8">
+                    <h2 className="mb-3">Forecast</h2>
+                    <section className="flex flex-wrap justify-start items-start space-x-28">
+                      {/* Day 1 */}
+                      <div className="bg-customBrownTwo px-8 py-5 w-fit rounded-xl shadow-lg">
+                        <h3 className="">
+                          {getDayOfWeek(time)} {getDate(time)}
+                        </h3>
+                        <h5 className="text-center">{weatherCondition}</h5>
+                        <p className="text-center">{maxTemperature}°C</p>
+                        <p className="text-center">Rain: {secondDayRain}</p>
+                      </div>
+                      {/* Day 2 */}
+                      <div className="bg-customBrownTwo px-8 py-5 w-fit rounded-xl shadow-lg">
+                        <h3 className="">
+                          {getDayOfWeek(secondDayTime)} {getDate(secondDayTime)}
+                        </h3>
+                        <h5 className="text-center">{secondDayCondition}</h5>
+                        <p className="text-center">{secondDayTemperature}°C</p>
+                        <p className="text-center">Rain: {secondDayRain}</p>
+                      </div>
+                      {/* Day 3 */}
+                      <div className="bg-customBrownTwo px-8 py-5 w-fit rounded-xl shadow-lg">
+                        <h3 className="">
+                          {getDayOfWeek(thirdDayTime)} {getDate(thirdDayTime)}
+                        </h3>
+                        <h5 className="text-center">{thirdDayCondition}</h5>
+                        <p className="text-center">{thirdDayTemperature}°C</p>
+                        <p className="text-center">Rain: {thirdDayRain}</p>
+                      </div>
+                    </section>
+                  </div>
+                  {/* Hourly */}
+                  <div className="text-customBrownFour pt-8">
+                    <h2 className="mb-3">Hourly</h2>
+                    <section className="max-w-[980px] flex justify-start items-start space-x-3 overflow-x-scroll scrollbar-hide py-4">
+                      {hourlyEpoch.map((epoch) => (
+                        <div className="bg-customBrownTwo px-8 py-5 w-auto rounded-xl shadow-lg">
+                          <p key={epoch} className="text-center">
+                            {twelveHourTime(epoch)}
+                          </p>
+                          <p className="text-center">
+                            {hourlyTemperature[tempCount++]}
+                          </p>
+                          <img
+                            src={
+                              hourlyWeatherConditionIcon[
+                                weatherConditionIconCount++
+                              ]
+                            }
+                            alt="icon"
+                          />
+                          <p className="text-center">
+                            {hourlyWeatherCondition[weatherConditionCount++]}
+                          </p>
+                        </div>
+                      ))}
+                    </section>
+                  </div>
                 </div>
-            )}
+              </section>
+            </main>
+          </div>
         </div>
-    );
+      )}
+      {isError && (
+        <div className="text-center text-customBrownFour space-y-12 pt-[200px]">
+          <h1>404 Error</h1>
+          <h2>{error}</h2>
+          <h3>There doesn't exist a city named "{city}"</h3>
+          <h4>Please search a valid city</h4>
+          <Link to="/" className="text-lg underline">
+            Go Back to Search
+          </Link>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default WeatherPage;
+
+// {isError && (
+//   <div className="error">
+//       <div className="err">404 Error</div>
+//       <div className="error-message">{error}</div>
+//       <div className="wrong-location">
+//           There doesn't exist a city named "{city || cityName}"
+//       </div>
+//       <div className="try-again">Please search a valid city</div>
+//       <Link to="/" className="go-back-search">
+//           Go Back to Search
+//       </Link>
+//   </div>
+// )}
